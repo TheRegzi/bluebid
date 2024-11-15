@@ -33,6 +33,6 @@
   "*.scss": [
     "prettier --write"
   ]
-}
   }
+}
 
