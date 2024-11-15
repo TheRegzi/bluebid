@@ -1,7 +1,7 @@
 {
   "name": "bluebid",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -23,16 +23,15 @@
     "vite": "^5.4.10"
   },
   "lint-staged": {
-  "*.js": [
-    "prettier --write",
-    "eslint --fix"
-  ],
-  "*.html": [
-    "prettier --write"
-  ],
-  "*.scss": [
-    "prettier --write"
-  ]
+    "*.js": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.html": [
+      "prettier --write"
+    ],
+    "*.scss": [
+      "prettier --write"
+    ]
   }
 }
-
