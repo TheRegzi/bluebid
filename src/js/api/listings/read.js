@@ -57,13 +57,15 @@ function renderListings(listings) {
         : listing.title;
 
     listingElement.innerHTML = `
-    <div class='flex flex-col justify-center mx-auto w-350 my-5'>
+    <a href="/listing/index.html?id=${listing.id}" class="block">
+    <div class='flex flex-col justify-center mx-auto w-350 mb-10'>
     <img src="${imageUrl}" alt="${imageAlt}" class='w-350 rounded-t-xl shadow-2xl'>
-        <div class='bg-secondary rounded-b-xl mb-2 p-3 shadow-lg>
-            <h3 class='font-headingMd font-bold'>${listing.title}</h3>
-            <p>Current Bid: ${listing.currentBid || 0} credits</p>
+        <div class='bg-secondary rounded-b-xl mb-2 p-3 shadow-lg'>
+            <h3 class='font-headingMd font-bold text-md'>${listing.title}</h3>
+            <p class='font-body'>Current Bid: ${listing.currentBid || 0} credits</p>
         <div>
     </div>
+    </a>
     `;
     listingsContainer.appendChild(listingElement);
   });
