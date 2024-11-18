@@ -25,8 +25,20 @@ const createAuction = document.getElementById('createAuction');
 const myProfile = document.getElementById('myProfile');
 const logOutButton = document.getElementById('logOut');
 
-if (!localStorage.getItem('token')) {
-  createAuction.classList.add('hidden');
-  myProfile.classList.add('hidden');
-  logOutButton.classList.add('hidden');
+function updateUIBasedOnAuth() {
+  const token = localStorage.getItem('token');
+
+  if (!token) {
+    createAuction.classList.add('hidden');
+    myProfile.classList.add('hidden');
+    logOutButton.classList.add('hidden');
+  } else {
+    createAuction.classList.remove('hidden');
+    myProfile.classList.remove('hidden');
+    logOutButton.classList.remove('hidden');
+    logIn.classList.add('hidden');
+    register.classList.add('hidden');
+  }
 }
+
+updateUIBasedOnAuth();
