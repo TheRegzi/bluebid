@@ -5,28 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BlueBid</title>
     <link rel="icon" href="/favicon_bb/favicon.ico" />
+    <script
+      src="https://kit.fontawesome.com/878e5c0278.js"
+      crossorigin="anonymous"
+    ></script>
     <script type="module" src="/src/app.js"></script>
   </head>
   <body class="flex flex-col min-h-screen">
     <header
-      class="flex flex-row text-black justify-between items-center font-accent"
+      class="flex flex-row text-black justify-between items-center font-accent border-b border-accent2 shadow-lg"
     >
-      <nav class="flex flex-row">
-        <div>
-          <img
-            src="/assets/bluebid-logo.png"
-            alt="BlueBidLogo"
-            class="h-24 md:h-28 p-4 pl-8"
-          />
-        </div>
-        <div class="flex flex-col sm:flex-row">
-          <a href="/index.html">Home</a>
-          <a href="#">Search</a>
-          <a href="#">Log In</a>
-          <a href="#">Register</a>
-          <a href="#">Create Auction Listing</a>
-          <a href="#">My Profile</a>
-          <button>Log Out</button>
+      <div class="hamburger-menu">
+        <img
+          src="/assets/bluebid-logo.png"
+          alt="BlueBidLogo"
+          class="h-24 md:h-28 p-4 pl-8"
+        />
+      </div>
+      <nav>
+        <div class="hamburger-menu">
+          <button
+            id="hamburger-button"
+            aria-label="Menu button"
+            class="pr-10 flex flex-col md:hidden text-xl text-black"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div
+            id="hamburger-content"
+            class="hidden flex flex-col md:block text-md text-black font-accentFont font-medium"
+          >
+            <a class="px-10 mb-4 md:mb-0" href="/index.html">Home</a>
+            <a class="px-10 mb-4 md:mb-0" href="#">Search</a>
+            <a class="px-10 mb-4 md:mb-0" href="#">Log In</a>
+            <a class="px-10 mb-4 md:mb-0" href="#">Register</a>
+            <a class="px-10 mb-4 md:mb-0" href="#">Create Auction Listing</a>
+            <a class="px-10 mb-4 md:mb-0" href="#">My Profile</a>
+            <button
+              class="mt-2 md:mt-0 w-32 ml-10 mr-12 text-left text-white rounded-xl bg-accent font-accentFont py-2 px-6 shadow-lg"
+              id="logOut"
+            >
+              Log Out
+            </button>
+          </div>
         </div>
       </nav>
     </header>

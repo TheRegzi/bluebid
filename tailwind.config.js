@@ -7,6 +7,7 @@ export default {
         primary: '#BCDEF2',
         secondary: '#D8EBEB',
         accent: '#4C5A62',
+        accent2: '#9CB8C8',
         customRed: '#A83131',
       },
       fontFamily: {
