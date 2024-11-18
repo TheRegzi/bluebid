@@ -2,11 +2,11 @@ import { API_AUCTION_LISTINGS } from '../constants.js';
 
 const listingsContainer = document.getElementById('listings-container');
 let currentPage = 1;
-const listingsPerPage = 10;
+const listingsPerPage = 12;
 let isFetching = false;
 let isLastPage = false;
 
-export async function fetchListings(limit = 10, page = 1) {
+export async function fetchListings(limit = 12, page = 1) {
   const apiUrl = API_AUCTION_LISTINGS;
 
   try {
