@@ -18,3 +18,15 @@ if (hamburgerButton && content) {
 } else {
   console.error('Hamburger button or content not found in the DOM.');
 }
+
+const logIn = document.getElementById('logIn');
+const register = document.getElementById('register');
+const createAuction = document.getElementById('createAuction');
+const myProfile = document.getElementById('myProfile');
+const logOutButton = document.getElementById('logOut');
+
+if (!localStorage.getItem('token')) {
+  createAuction.classList.add('hidden');
+  myProfile.classList.add('hidden');
+  logOutButton.classList.add('hidden');
+}
