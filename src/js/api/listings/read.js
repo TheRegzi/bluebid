@@ -52,7 +52,7 @@ function renderListings(listings) {
     const imageUrl =
       listing.media.length > 0
         ? listing.media[0].url
-        : 'https://via.placeholder.com/150';
+        : 'https://img.freepik.com/free-vector/flat-design-no-photo-sign_23-2149272417.jpg?t=st=1732025243~exp=1732028843~hmac=90885c767238b4085c78b33d2e8a8113608c31d3256c30818a26717515635287&w=826';
     const imageAlt =
       listing.media.length > 0
         ? listing.media[0].alt || listing.title
@@ -131,7 +131,7 @@ async function displaySingleAuction(listing) {
   const imageUrl =
     listing.data.media.length > 0
       ? listing.data.media[0].url
-      : 'https://via.placeholder.com/150';
+      : 'https://img.freepik.com/free-vector/flat-design-no-photo-sign_23-2149272417.jpg?t=st=1732025243~exp=1732028843~hmac=90885c767238b4085c78b33d2e8a8113608c31d3256c30818a26717515635287&w=826';
   const imageAlt =
     listing.data.media.length > 0
       ? listing.data.media[0].alt || listing.data.title
