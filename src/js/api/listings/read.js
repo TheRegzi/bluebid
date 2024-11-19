@@ -58,7 +58,7 @@ function renderListings(listings) {
 
     listingElement.innerHTML = `
         <a href="/listing/index.html?id=${listing.id}" class="block">
-          <div class="flex flex-col justify-center mx-auto w-80 h-96 mb-10 shadow-xl">
+          <div class="flex flex-col justify-center mx-auto w-80 h-96 mb-10">
             <img src="${imageUrl}" alt="${imageAlt}" class="w-full h-4/5 object-cover rounded-t-xl shadow-2xl">
             <div class="bg-secondary rounded-b-xl p-5 shadow-lg border-t border-accent2 flex-grow">
               <h3 class="font-headingMd font-bold text-md text-shadow-lg">${listing.title}</h3>
