@@ -65,16 +65,16 @@ async function displaySingleAuction(listing) {
 
   const container = document.getElementById('listing-container');
   container.innerHTML = `
-      <div class='w-550'>
+      <div class='w-350 sm:w-550'>
       <img src="${imageUrl}" alt="${imageAlt}" class="w-full h-4/5 object-cover rounded-t-xl shadow-2xl">
       <div>
-      <h1 class="font-headingMd font-medium text-lg text-shadow-lg mt-2">${listing.data.title}</h1>
-      <p>Current bid: ${listing.data.bids?.length > 0 ? listing.data.bids[listing.data.bids.length - 1].amount : 0} Credits</p>
-      <p>${listing.data.description}</p>
+      <h1 class="font-headingMd font-medium text-lg text-shadow-lg mt-4">${listing.data.title}</h1>
+      <p class='font-body text-sm font-medium mt-4'>Current bid: ${listing.data.bids?.length > 0 ? listing.data.bids[listing.data.bids.length - 1].amount : 0} Credits</p>
+      <p class='font-body text-sm mt-4'>${listing.data.description}</p>
       </div>
       </div>
-      <div>
-      <p>${hasEnded ? 'This auction has ended.' : `This Auction Ends at: ${formattedEndsAt}`}</p>
+      <div class='flex justify-center'>
+      <p class='font-headingMd text-sm text-white bg-accent text-center mt-8 px-3 py-5 rounded-lg w-72'>${hasEnded ? 'This auction has ended.' : `This Auction Ends at: ${formattedEndsAt}`}</p>
       </div>
   
       `;
