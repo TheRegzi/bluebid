@@ -1,3 +1,3 @@
-import { fetchListing } from '../../api/listings/read';
+import { fetchListing } from '../../api/listings/singleListing';
 
 fetchListing();
