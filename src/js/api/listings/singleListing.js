@@ -65,10 +65,10 @@ async function displaySingleAuction(listing) {
 
   const container = document.getElementById('listing-container');
   container.innerHTML = `
-      <div>
+      <div class='w-550'>
       <img src="${imageUrl}" alt="${imageAlt}" class="w-full h-4/5 object-cover rounded-t-xl shadow-2xl">
       <div>
-      <h1>${listing.data.title}</h1>
+      <h1 class="font-headingMd font-medium text-lg text-shadow-lg mt-2">${listing.data.title}</h1>
       <p>Current bid: ${listing.data.bids?.length > 0 ? listing.data.bids[listing.data.bids.length - 1].amount : 0} Credits</p>
       <p>${listing.data.description}</p>
       </div>
