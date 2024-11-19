@@ -90,7 +90,6 @@ window.addEventListener('scroll', handleScroll);
 
 export async function fetchListing() {
   const postId = new URLSearchParams(window.location.search).get('id');
-  console.log('Post ID:', postId);
 
   if (!postId) {
     console.error('Post ID not found in the URL');
@@ -138,13 +137,32 @@ async function displaySingleAuction(listing) {
       ? listing.data.media[0].alt || listing.data.title
       : listing.data.title;
 
+  const endsAtDate = new Date(listing.data.endsAt);
+  const now = new Date();
+
+  const hasEnded = endsAtDate < now;
+
+  const formattedEndsAt = new Intl.DateTimeFormat('no-NO', {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  }).format(endsAtDate);
+
   const container = document.getElementById('listing-container');
   container.innerHTML = `
     <div>
     <img src="${imageUrl}" alt="${imageAlt}" class="w-full h-4/5 object-cover rounded-t-xl shadow-2xl">
+    <div>
     <h1>${listing.data.title}</h1>
     <p>Current bid: ${listing.data.bids?.length > 0 ? listing.data.bids[listing.data.bids.length - 1].amount : 0}
     <p>${listing.data.description}</p>
+    </div>
+    </div>
+    <div>
+    <p>${hasEnded ? 'This auction has ended.' : `This Auction Ends at: kl. ${formattedEndsAt}`}</p>
     </div>
 
     `;
