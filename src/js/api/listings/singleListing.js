@@ -73,7 +73,7 @@ function createCarousel(listingArray) {
     const prevBtn = document.createElement('button');
     prevBtn.textContent = '❮';
     prevBtn.className =
-      'absolute top-1/2 left-2 transform -translate-y-1/2 bg-accent text-white p-2 rounded-full prev';
+      'absolute top-1/2 left-2 transform -translate-y-1/2 bg-accent text-white px-4 py-2 text-md rounded-full prev';
     prevBtn.addEventListener('click', () => {
       moveSlide(-1);
     });
@@ -82,7 +82,7 @@ function createCarousel(listingArray) {
     const nextBtn = document.createElement('button');
     nextBtn.textContent = '❯';
     nextBtn.className =
-      'absolute top-1/2 right-2 transform -translate-y-1/2 bg-accent text-white p-2 rounded-full next';
+      'absolute top-1/2 right-2 transform -translate-y-1/2 bg-accent text-white px-4 py-2 text-md rounded-full next';
     nextBtn.addEventListener('click', () => {
       moveSlide(1);
     });
