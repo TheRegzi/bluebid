@@ -176,17 +176,6 @@ async function displaySingleAuction(listing) {
     return;
   }
 
-  console.log(listing);
-
-  const imageUrl =
-    listing.data.media.length > 0
-      ? listing.data.media[0].url
-      : 'https://img.freepik.com/free-vector/flat-design-no-photo-sign_23-2149272417.jpg?t=st=1732025243~exp=1732028843~hmac=90885c767238b4085c78b33d2e8a8113608c31d3256c30818a26717515635287&w=826';
-  const imageAlt =
-    listing.data.media.length > 0
-      ? listing.data.media[0].alt || listing.data.title
-      : listing.data.title;
-
   const endsAtDate = new Date(listing.data.endsAt);
   const now = new Date();
 
@@ -216,6 +205,5 @@ async function displaySingleAuction(listing) {
       <div class='flex justify-center'>
       <p class='font-headingMd text-sm text-white bg-accent text-center mt-8 px-3 py-5 rounded-lg w-72'>${hasEnded ? 'This auction has ended.' : `This Auction Ends at: ${formattedEndsAt}`}</p>
       </div>
-  
       `;
 }
