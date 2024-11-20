@@ -33,7 +33,6 @@ export async function fetchListing() {
 }
 
 function createCarousel(listingArray) {
-  // Create the main wrapper for the carousel
   const carouselWrapper = document.createElement('div');
   carouselWrapper.className = 'relative w-full carousel';
 
@@ -70,23 +69,25 @@ function createCarousel(listingArray) {
     container.appendChild(item);
   });
 
-  const prevBtn = document.createElement('button');
-  prevBtn.textContent = '❮';
-  prevBtn.className =
-    'absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-700 text-white p-2 rounded-full prev';
-  prevBtn.addEventListener('click', () => {
-    moveSlide(-1);
-  });
-  carouselWrapper.appendChild(prevBtn);
+  if (listingArray.length > 1) {
+    const prevBtn = document.createElement('button');
+    prevBtn.textContent = '❮';
+    prevBtn.className =
+      'absolute top-1/2 left-2 transform -translate-y-1/2 bg-accent text-white p-2 rounded-full prev';
+    prevBtn.addEventListener('click', () => {
+      moveSlide(-1);
+    });
+    carouselWrapper.appendChild(prevBtn);
 
-  const nextBtn = document.createElement('button');
-  nextBtn.textContent = '❯';
-  nextBtn.className =
-    'absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-700 text-white p-2 rounded-full next';
-  nextBtn.addEventListener('click', () => {
-    moveSlide(1);
-  });
-  carouselWrapper.appendChild(nextBtn);
+    const nextBtn = document.createElement('button');
+    nextBtn.textContent = '❯';
+    nextBtn.className =
+      'absolute top-1/2 right-2 transform -translate-y-1/2 bg-accent text-white p-2 rounded-full next';
+    nextBtn.addEventListener('click', () => {
+      moveSlide(1);
+    });
+    carouselWrapper.appendChild(nextBtn);
+  }
 
   showSlides(slideIndex);
 
