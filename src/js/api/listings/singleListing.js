@@ -155,13 +155,10 @@ async function displaySingleAuction(listing) {
     <p class='font-body text-sm font-medium mt-4'>Current bid: ${listing.data.bids?.length > 0 ? listing.data.bids[listing.data.bids.length - 1].amount : 0} Credits</p>
     <p class='font-body text-sm mt-4'>${listing.data.description}</p>
     <div class='flex justify-center'>
-      <p class='font-headingMd text-sm text-white bg-accent text-center mt-8 px-3 py-5 rounded-lg w-72'>${hasEnded ? 'This auction has ended.' : `This Auction Ends at: ${formattedEndsAt}`}</p>
+      <p class='font-headingMd text-sm text-white bg-accent text-center mt-8 px-3 py-5 rounded-lg w-72 shadow-xl'>${hasEnded ? 'This auction has ended.' : `This Auction Ends at: ${formattedEndsAt}`}</p>
     </div>
   `;
   container.appendChild(auctionDetails);
-
-  const bidding = createBiddingContainer();
-  container.appendChild(bidding);
 }
 
 // function createBiddingContainer() {
