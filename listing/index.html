@@ -72,8 +72,36 @@
         </div>
       </nav>
     </header>
-    <main class="flex-1 flex justify-center mx-auto">
+    <main class="flex-1 flex flex-col justify-center mx-auto">
       <div id="listing-container" class="mt-8"></div>
+      <div
+        id="bidding-container"
+        class="flex flex-col w-350 sm:w-550 mt-8 bg-primary p-2"
+      >
+        <h2
+          class="flex justify-center font-headingMd font-medium text-lg text-shadow-lg py-5"
+        >
+          Place Your Bid
+        </h2>
+        <p class="font-body px-4">
+          Enter your bid amount below to participate in the auction. The current
+          highest bid is 1445 credits. Make sure your bid is higher to have a
+          chance to win!
+        </p>
+        <form action="" class="flex flex-col">
+          <div class="flex flex-col justify-center mx-auto mt-5">
+            <label for="bid-input"></label>
+            <input
+              type="text"
+              name="bid-input"
+              id="bid-input"
+              placeholder="Enter your bid"
+              class=""
+            />
+          </div>
+          <button class="bg-accent text-white">Place Bid</button>
+        </form>
+      </div>
     </main>
     <footer
       class="bg-accent font-accent text-white text-xs sm:text-sm p-16 md:p-24 mt-6"
