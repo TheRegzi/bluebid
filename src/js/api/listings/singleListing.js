@@ -64,7 +64,7 @@ function createCarousel(listingArray) {
     item.className = 'carousel-item';
     item.style.display = index === 0 ? 'block' : 'none';
     item.innerHTML = `
-      <img src="${listing.url}" alt="${listing.alt || 'Image'}" class="w-350 sm:w-550 h-full object-cover">
+      <img src="${listing.url}" alt="${listing.alt || 'Image'}" class="w-350 sm:w-550 h-full object-cover shadow-xl">
     `;
     container.appendChild(item);
   });
