@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auth | BlueBid</title>
+    <link rel="icon" href="/favicon_bb/favicon.ico" />
+    <script
+      src="https://kit.fontawesome.com/878e5c0278.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="/src/app.js"></script>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <header
+      class="flex flex-row text-black justify-between items-center font-accent border-b border-accent2 shadow-lg"
+    >
+      <div class="hamburger-menu">
+        <a href="/index.html"
+          ><img
+            src="/assets/bluebid-logo.png"
+            alt="BlueBidLogo"
+            class="h-24 md:h-28 p-4 pl-8"
+        /></a>
+      </div>
+      <nav>
+        <div class="hamburger-menu">
+          <!-- Hide button at lg breakpoint -->
+          <button
+            id="hamburger-button"
+            aria-label="Menu button"
+            class="pr-10 flex flex-col lg:hidden text-xl text-black"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button>
+
+          <!-- Show links starting at lg breakpoint -->
+          <div
+            id="hamburger-content"
+            class="hidden flex-col lg:flex text-md text-black font-accentFont font-medium"
+          >
+            <a class="px-10 mb-4 lg:mb-0" href="/index.html">Home</a>
+            <a class="px-10 mb-4 lg:mb-0" href="/search/index.html">Search</a>
+            <a
+              class="px-10 mb-4 lg:mb-0"
+              href="/auth/login/index.html"
+              id="logIn"
+              >Log In</a
+            >
+            <a
+              class="px-10 mb-4 lg:mb-0"
+              href="/auth/register/index.html"
+              id="register"
+              >Register</a
+            >
+            <a
+              class="px-10 mb-4 lg:mb-0"
+              href="/listing/create/index.html"
+              id="createAuction"
+              >Create Auction Listing</a
+            >
+            <a
+              class="px-10 mb-4 lg:mb-0"
+              href="/profile/index.html"
+              id="myProfile"
+              >My Profile</a
+            >
+            <button
+              class="mt-2 lg:mt-0 w-32 ml-10 mr-12 text-left text-white rounded-xl bg-accent font-accentFont py-2 px-6 shadow-lg"
+              id="logOut"
+            >
+              Log Out
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="flex-1 flex flex-col mx-auto">
+      <h1
+        class="flex font-headingMd font-medium text-lg justify-center mt-10 text-shadow"
+      >
+        Welcome to BlueBid!
+      </h1>
+      <p class="mt-5 text-md mx-auto">
+        <a class="text-accent font-semibold" href="/auth/login/index.html"
+          >Log In here</a
+        >
+        or
+        <a class="text-accent font-semibold" href="/auth/register/index.html"
+          >Register here</a
+        >!
+      </p>
+    </main>
+    <footer
+      class="bg-accent font-accent text-white text-xs sm:text-sm p-16 md:p-24"
+    >
+      <h3 class="flex justify-center">© BlueBid corp.</h3>
+    </footer>
+  </body>
+</html>
