@@ -14,6 +14,10 @@ export default async function router(pathname = window.location.pathname) {
         await import('./views/login.js');
         console.log('Loaded login.js');
         break;
+      case '/auth/register/index.html':
+        await import('./views/register.js');
+        console.log('Loaded register.js');
+        break;
     }
   } catch (error) {
     console.error('Error in router:', error);
