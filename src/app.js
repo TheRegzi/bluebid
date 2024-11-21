@@ -26,7 +26,7 @@ const myProfile = document.getElementById('myProfile');
 const logOutButton = document.getElementById('logOut');
 
 function updateUIBasedOnAuth() {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem('userToken');
 
   if (!token) {
     createAuction.classList.add('hidden');
