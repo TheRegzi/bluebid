@@ -1,6 +1,12 @@
+import { API_AUTH_REGISTER } from '../constants';
+
 export async function register({ name, email, password, bio, avatar, banner }) {
+  const apiUrl = API_AUTH_REGISTER;
+
   try {
-    const response = await fetch('https://v2.api.noroff.dev/auth/register', {
+    const url = new URL(apiUrl);
+
+    const response = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -63,7 +69,7 @@ export async function onRegister(event) {
   try {
     const response = await register(registrationData);
     alert('Registration successful!');
-    window.location.href = '/auth/login/';
+    window.location.href = '/auth/login/index.html';
   } catch (error) {
     console.error('Registration error:', error);
     alert(error.message);
