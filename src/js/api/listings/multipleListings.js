@@ -27,7 +27,6 @@ export async function fetchListings(limit = 12, page = 1) {
     }
 
     const { data, meta } = await response.json();
-    console.log(data);
 
     if (meta.isLastPage) {
       isLastPage = true;
