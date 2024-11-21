@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register | BlueBid</title>
+    <link rel="icon" href="/favicon_bb/favicon.ico" />
+    <script
+      src="https://kit.fontawesome.com/878e5c0278.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="/src/app.js"></script>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <header
+      class="flex flex-row text-black justify-between items-center font-accent border-b border-accent2 shadow-lg"
+    >
+      <div class="hamburger-menu">
+        <a href="/index.html"
+          ><img
+            src="/assets/bluebid-logo.png"
+            alt="BlueBidLogo"
+            class="h-24 md:h-28 p-4 pl-8"
+        /></a>
+      </div>
+      <nav>
+        <div class="hamburger-menu">
+          <button
+            id="hamburger-button"
+            aria-label="Menu button"
+            class="pr-10 flex flex-col md:hidden text-xl text-black"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div
+            id="hamburger-content"
+            class="hidden flex-col md:block text-md text-black font-accentFont font-medium"
+          >
+            <a class="px-10 mb-4 md:mb-0" href="/index.html">Home</a>
+            <a class="px-10 mb-4 md:mb-0" href="/search/index.html">Search</a>
+            <a
+              class="px-10 mb-4 md:mb-0"
+              href="/auth/login/index.html"
+              id="logIn"
+              >Log In</a
+            >
+            <a
+              class="px-10 mb-4 md:mb-0"
+              href="/auth/register/index.html"
+              id="register"
+              >Register</a
+            >
+            <a
+              class="px-10 mb-4 md:mb-0"
+              href="/listing/create/index.html"
+              id="createAuction"
+              >Create Auction Listing</a
+            >
+            <a
+              class="px-10 mb-4 md:mb-0"
+              href="/profile/index.html"
+              id="myProfile"
+              >My Profile</a
+            >
+            <button
+              class="mt-2 md:mt-0 w-32 ml-10 mr-12 text-left text-white rounded-xl bg-accent font-accentFont py-2 px-6 shadow-lg"
+              id="logOut"
+            >
+              Log Out
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="flex-1 flex flex-col bg-secondary">
+      <h1
+        class="flex font-headingMd font-medium text-lg justify-center mt-10 text-shadow"
+      >
+        Register to BlueBid
+      </h1>
+      <div class="flex flex-col items-center justify-center">
+        <form
+          name="register"
+          id="register"
+          class="flex flex-col items-center border-4 border-gray-300 rounded-lg w-350 sm:w-550 p-5"
+        >
+          <div class="w-full flex flex-col">
+            <label for="username" class="font-heading text-lg mb-2"
+              >Username</label
+            >
+            <input
+              id="username"
+              type="username"
+              name="username"
+              autocomplete="username"
+              class="font-bod border-accent bg-white p-4"
+              placeholder="Enter Username"
+              required
+              maxlength="20"
+              pattern="^[\w]+$"
+              title="Please enter a username using only letters and numbers"
+            />
+          </div>
+          <div class="w-full flex flex-col">
+            <label for="email" class="font-heading text-lg mb-2">E-mail</label>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              autocomplete="email"
+              class="font-body border-2 border-accent bg-white p-4"
+              placeholder="Enter E-mail"
+              required
+              pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
+              title="Please enter a valid stud.noroff.no address"
+            />
+          </div>
+          <div class="w-full flex flex-col">
+            <label for="password" class="font-heading text-lg my-2"
+              >Password</label
+            >
+            <input
+              type="password"
+              name="password"
+              id="password"
+              autocomplete="current-password"
+              class="font-body border-2 border-accent bg-white p-4"
+              placeholder="Enter Password"
+              required
+              minlength="8"
+            />
+          </div>
+          <div class="w-full flex flex-col">
+            <label for="bio" class="font-heading text-lg mb-2"
+              >Bio (Optional)</label
+            >
+            <textarea
+              name="bio"
+              id="bio"
+              class="font-body border-2 border-accent bg-white p-4"
+              placeholder="Enter Username"
+            >
+Test</textarea
+            >
+          </div>
+          <div class="w-full flex flex-col">
+            <label for="avatarUrl" class="font-heading text-lg my-2"
+              >Profile Image URL (Optional)</label
+            >
+            <input
+              type="url"
+              name="avatarUrl"
+              id="avatarUrl"
+              class="font-body border-2 border-accent bg-white p-4"
+              placeholder="Enter Profile Image URL"
+            />
+          </div>
+          <div class="w-full flex flex-col">
+            <label for="bannerUrl" class="font-heading text-lg my-2"
+              >Banner Image URL (Optional)</label
+            >
+            <input
+              type="url"
+              name="bannerUrl"
+              id="bannerUrl"
+              class="font-body border-2 border-accent bg-white p-4"
+              placeholder="Enter Banner Image URL"
+            />
+          </div>
+          <button
+            class="bg-accent text-white mt-8 px-10 py-2 font-accent text-md sm:text-md"
+          >
+            Register
+          </button>
+          <p class="font-body text-sm mt-5">
+            Already a user?
+            <a class="text-accent font-semibold" href="/auth/register/"
+              >Login here!</a
+            >
+          </p>
+        </form>
+      </div>
+    </main>
+    <footer
+      class="bg-accent font-accent text-white text-xs sm:text-sm p-16 md:p-24"
+    >
+      <h3 class="flex justify-center">© BlueBid corp.</h3>
+    </footer>
+  </body>
+</html>
