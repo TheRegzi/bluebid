@@ -1,6 +1,12 @@
+import { API_AUTH_LOGIN } from '../constants';
+
 export async function login({ email, password }) {
+  const apiUrl = API_AUTH_LOGIN;
+
   try {
-    const response = await fetch('https://v2.api.noroff.dev/auth/login', {
+    const url = new URL(apiUrl);
+
+    const response = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
