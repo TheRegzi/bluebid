@@ -126,7 +126,7 @@ async function displaySingleAuction(listing) {
     console.error('Invalid listing data:', listing);
     return;
   }
-
+  console.log(listing);
   const endsAtDate = new Date(listing.data.endsAt);
   const now = new Date();
   const hasEnded = endsAtDate < now;
@@ -159,4 +159,64 @@ async function displaySingleAuction(listing) {
     </div>
   `;
   container.appendChild(auctionDetails);
+
+  addBidsContainerWhenToken(listing);
+}
+
+async function addBidsContainerWhenToken(listing) {
+  const bidsContainer = document.getElementById('bids-container');
+  const token = localStorage.getItem('userToken');
+
+  if (!bidsContainer) {
+    console.error('Bids container element not found.');
+    return;
+  }
+
+  if (!listing || !listing.data || !Array.isArray(listing.data.bids)) {
+    console.error('Invalid listing or bids data:', listing);
+    return;
+  }
+
+  if (token) {
+    bidsContainer.innerHTML = `
+      <h3 class="flex justify-center font-headingMd font-medium text-lg text-shadow-lg py-5">Placed Bids</h3>
+    `;
+
+    const sortedBids = listing.data.bids.sort(
+      (a, b) => new Date(b.created) - new Date(a.created)
+    );
+
+    sortedBids.forEach((bid, index) => {
+      const createdDate = new Date(bid.created);
+      if (isNaN(createdDate)) {
+        console.error(`Invalid date for bid #${index + 1}:`, bid.created);
+        return;
+      }
+
+      const formattedCreated = new Intl.DateTimeFormat('no-NO', {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+      }).format(createdDate);
+
+      const bidDiv = document.createElement('div');
+      bidDiv.classList.add(
+        'bg-secondary',
+        'rounded-xl',
+        'py-8',
+        'my-4',
+        'shadow-xl'
+      );
+
+      bidDiv.innerHTML = `
+        <p class="font-body text-sm font-medium mx-8">${bid.bidder.name} bid ${bid.amount} Credits</p>
+        <p class="font-body text-sm mx-8">Created: ${formattedCreated}</p>
+      `;
+
+      bidsContainer.appendChild(bidDiv);
+    });
+  }
 }
