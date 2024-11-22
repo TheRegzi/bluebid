@@ -160,14 +160,3 @@ async function displaySingleAuction(listing) {
   `;
   container.appendChild(auctionDetails);
 }
-
-// function createBiddingContainer() {
-//   const biddingContainer = document.createElement('div');
-//   biddingContainer.className = 'bg-accent mt-10';
-//   biddingContainer.innerHTML = `
-//   <h2>Hello</h2>
-//   <p></p>
-//   `;
-
-//   return biddingContainer;
-// }
