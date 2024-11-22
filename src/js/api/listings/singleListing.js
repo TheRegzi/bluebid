@@ -177,7 +177,15 @@ async function addBidsContainerWhenToken(listing) {
     return;
   }
 
-  if (token) {
+  if (token && listing.data.bids.length === 0) {
+    const noBidsMessage = document.createElement('p');
+    noBidsMessage.className = 'font-body text-sm text-black text-center mt-4';
+    noBidsMessage.textContent = 'No placed bids yet.';
+    bidsContainer.appendChild(noBidsMessage);
+    return;
+  }
+
+  if (token && listing.data.bids.length > 0) {
     bidsContainer.innerHTML = `
       <h3 class="flex justify-center font-headingMd font-medium text-lg text-shadow-lg py-5">Placed Bids</h3>
     `;
