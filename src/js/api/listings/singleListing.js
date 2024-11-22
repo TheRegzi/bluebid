@@ -248,15 +248,9 @@ export async function placeBid(formData) {
 
   try {
     const requestHeaders = await headers();
-
-    console.log('postId:', postId);
-    console.log('Bid Input:', bidInput);
-    console.log('Headers:', requestHeaders);
-
     const payload = {
       amount: parseFloat(bidInput),
     };
-    console.log('Request Body:', JSON.stringify(payload));
 
     const response = await fetch(apiUrl, {
       method: 'POST',
