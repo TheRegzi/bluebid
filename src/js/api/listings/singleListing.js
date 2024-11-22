@@ -280,22 +280,3 @@ export async function placeBid(formData) {
     alert('Error placing bid: ' + error.message);
   }
 }
-
-export async function handlePlaceBid(formData) {
-  const postId = new URLSearchParams(window.location.search).get('id');
-
-  try {
-    const result = await placeBid(formData);
-    if (result) {
-      console.log('Bid created successfully:', result);
-      alert('Bid placed successfully!');
-      window.location.href = `/listing/index.html?id=${postId}`;
-      return true;
-    }
-    return false;
-  } catch (error) {
-    console.error('Failed to handle bid:', error);
-    alert('Failed to handle bid: ' + error.message);
-    return false;
-  }
-}

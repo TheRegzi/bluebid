@@ -1,4 +1,4 @@
-import { fetchListing, handlePlaceBid } from '../../api/listings/singleListing';
+import { fetchListing, placeBid } from '../../api/listings/singleListing';
 
 fetchListing();
 
@@ -15,7 +15,7 @@ function initializeBidCreation() {
     try {
       const formData = new FormData(form);
 
-      const isSuccess = await handlePlaceBid(formData);
+      const isSuccess = await placeBid(formData);
 
       if (isSuccess) {
         console.log('Bid creation handled successfully');
