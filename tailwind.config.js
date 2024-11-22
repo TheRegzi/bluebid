@@ -3,7 +3,13 @@
 import plugin from 'tailwindcss/plugin';
 
 export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx,html}'],
+  content: [
+    './index.html',
+    './auth/**/*.html',
+    './listing/**/*.html',
+    './profile/**/*.html',
+    './src/**/*.{js,ts,jsx,tsx,html}',
+  ],
   theme: {
     extend: {
       colors: {
