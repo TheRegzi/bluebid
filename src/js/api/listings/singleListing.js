@@ -1,4 +1,5 @@
 import { API_AUCTION_LISTINGS } from '../constants.js';
+import { headers } from '../headers.js';
 
 export async function fetchListing() {
   const postId = new URLSearchParams(window.location.search).get('id');
@@ -226,5 +227,81 @@ async function addBidsContainerWhenToken(listing) {
 
       bidsContainer.appendChild(bidDiv);
     });
+  }
+}
+
+export async function placeBid(formData) {
+  const postId = new URLSearchParams(window.location.search).get('id');
+
+  if (!postId) {
+    alert('Invalid post ID. Cannot place bid.');
+    return;
+  }
+
+  const apiUrl = `${API_AUCTION_LISTINGS}/${postId}/bids`;
+  const bidInput = formData.get('bid-input');
+
+  if (!bidInput || isNaN(bidInput) || parseFloat(bidInput) <= 0) {
+    alert('Please enter a valid bid amount greater than 0.');
+    return;
+  }
+
+  try {
+    const requestHeaders = await headers();
+
+    console.log('postId:', postId);
+    console.log('Bid Input:', bidInput);
+    console.log('Headers:', requestHeaders);
+
+    const payload = {
+      amount: parseFloat(bidInput),
+    };
+    console.log('Request Body:', JSON.stringify(payload));
+
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: requestHeaders,
+      body: JSON.stringify(payload),
+    });
+
+    console.log('Response Status:', response.status);
+
+    if (response.ok) {
+      const result = await response.json();
+      console.log('Bid placed successfully:', result);
+      return result;
+    } else {
+      const errorDetails = await response.json();
+      console.error(
+        'Failed to place bid:',
+        JSON.stringify(errorDetails, null, 2)
+      );
+      alert(
+        `Error placing bid: ${errorDetails.errors?.[0]?.message || errorDetails.message || 'Unknown error'}`
+      );
+      return null;
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Error placing bid: ' + error.message);
+  }
+}
+
+export async function handlePlaceBid(formData) {
+  const postId = new URLSearchParams(window.location.search).get('id');
+
+  try {
+    const result = await placeBid(formData);
+    if (result) {
+      console.log('Bid created successfully:', result);
+      alert('Bid placed successfully!');
+      window.location.href = `/listing/index.html?id=${postId}`;
+      return true;
+    }
+    return false;
+  } catch (error) {
+    console.error('Failed to handle bid:', error);
+    alert('Failed to handle bid: ' + error.message);
+    return false;
   }
 }
