@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BlueBid | Edit Auction Listing</title>
+    <link rel="icon" href="/favicon_bb/favicon.ico" />
+    <script
+      src="https://kit.fontawesome.com/878e5c0278.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="/src/app.js"></script>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <header
+      class="flex flex-row text-black justify-between items-center font-accent border-b border-accent2 shadow-lg"
+    >
+      <div class="hamburger-menu">
+        <a href="/index.html"
+          ><img
+            src="/assets/bluebid-logo.png"
+            alt="BlueBidLogo"
+            class="h-24 md:h-28 p-4 pl-8"
+        /></a>
+      </div>
+      <nav>
+        <div class="hamburger-menu">
+          <button
+            id="hamburger-button"
+            aria-label="Menu button"
+            class="pr-10 flex flex-col lg:hidden text-xl text-black"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div
+            id="hamburger-content"
+            class="hidden flex-col lg:flex text-md text-black font-accentFont font-medium"
+          >
+            <a class="px-10 mb-4 lg:mb-0" href="/index.html">Home</a>
+            <a class="px-10 mb-4 lg:mb-0" href="/search/index.html">Search</a>
+            <a
+              class="px-10 mb-4 lg:mb-0"
+              href="/auth/login/index.html"
+              id="logIn"
+              >Log In</a
+            >
+            <a
+              class="px-10 mb-4 lg:mb-0"
+              href="/auth/register/index.html"
+              id="register"
+              >Register</a
+            >
+            <a
+              class="px-10 mb-4 lg:mb-0"
+              href="/listing/create/index.html"
+              id="createAuction"
+              >Create Auction Listing</a
+            >
+            <a
+              class="px-10 mb-4 lg:mb-0"
+              href="/profile/index.html"
+              id="myProfile"
+              >My Profile</a
+            >
+            <button
+              class="mt-2 lg:mt-0 w-32 ml-10 mr-12 text-left text-white rounded-xl bg-accent font-accentFont py-2 px-6 shadow-lg"
+              id="logOut"
+            >
+              Log Out
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="flex-1 flex flex-col mx-auto">
+      <h1
+        class="flex font-headingMd font-medium text-lg justify-center mt-10 text-shadow mb-5"
+      >
+        Edit Auction Listing
+      </h1>
+      <div class="flex flex-col w-350 sm:w-550 p-2">
+        <p class="p-2">
+          Edit the details below to update the auction listing. Make sure to add
+          a clear title, description, image URL(s) and set a deadline.
+        </p>
+        <form name="create-form" class="flex flex-col w-350 sm:w-550 p-2">
+          <div class="flex flex-col">
+            <label for="title" class="font-headingMd text-md mb-1"
+              >Add a Title</label
+            >
+            <input
+              type="text"
+              name="title"
+              class="border-2 border-accent rounded-md w-full p-3 mb-4 font-body text-sm"
+              id="title"
+              placeholder="Enter Title"
+              required
+            />
+          </div>
+          <div>
+            <label for="description" class="font-headingMd text-md mb-1"
+              >Add a Description</label
+            >
+            <input
+              type="text"
+              name="description"
+              class="border-2 border-accent rounded-md w-full p-3 mb-4 font-body text-sm"
+              id="description"
+              placeholder="Enter Description"
+              required
+            />
+          </div>
+          <div>
+            <label for="image1" class="font-headingMd text-md mb-1"
+              >Add Image URL 1</label
+            >
+            <input
+              type="url"
+              name="image1"
+              class="border-2 border-accent rounded-md w-full p-3 mb-4 font-body text-sm"
+              id="image1"
+              placeholder="Enter Image URL 1"
+              required
+            />
+          </div>
+          <div>
+            <label for="image2" class="font-headingMd text-md mb-1"
+              >Add Image URL 2 (Optional)</label
+            >
+            <input
+              type="url"
+              name="image2"
+              class="border-2 border-accent rounded-md w-full p-3 mb-4 font-body text-sm"
+              id="image2"
+              placeholder="Enter Image URL 2"
+            />
+          </div>
+          <div>
+            <label for="image3" class="font-headingMd text-md mb-1"
+              >Add Image URL 3 (Optional)</label
+            >
+            <input
+              type="url"
+              name="image3"
+              class="border-2 border-accent rounded-md w-full p-3 mb-4 font-body text-sm"
+              id="image3"
+              placeholder="Enter Image URL 3"
+            />
+          </div>
+          <div>
+            <label for="deadline" class="font-headingMd text-md mb-1"
+              >Add a Deadline Date</label
+            >
+            <input
+              type="date"
+              name="deadline"
+              class="border-2 border-accent rounded-md w-full p-3 mb-4 font-body text-sm"
+              id="deadline"
+              placeholder="Enter Deadline Date"
+            />
+          </div>
+          <div class="flex mx-auto justify-center mb-10">
+            <button
+              class="bg-accent text-white mt-8 px-10 py-2 font-accentFont text-sm sm:text-md"
+              type="submit"
+            >
+              Update Listing
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+    <footer
+      class="bg-accent font-accent text-white text-xs sm:text-sm p-16 md:p-24 mt-6"
+    >
+      <h3 class="flex justify-center">© BlueBid corp.</h3>
+    </footer>
+  </body>
+</html>
