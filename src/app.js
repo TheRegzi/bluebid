@@ -1,7 +1,9 @@
 import '../src/css/style.css';
 import router from './js/router';
+import { logOutUser } from './js/api/auth/logout';
 
 await router(window.location.pathname);
+logOutUser();
 
 const hamburgerButton = document.getElementById('hamburger-button');
 const content = document.getElementById('hamburger-content');
