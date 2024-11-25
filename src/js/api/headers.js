@@ -1,9 +1,7 @@
-import { getKey } from './auth/api-key';
-
 export async function headers() {
   const headers = new Headers();
 
-  const apiKey = await getKey('My API Key Name');
+  const apiKey = import.meta.env.VITE_NOROFF_API_KEY;
   const userToken = localStorage.getItem('userToken');
 
   headers.append('Content-Type', 'application/json');
