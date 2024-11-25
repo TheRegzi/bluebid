@@ -22,6 +22,10 @@ export default async function router(pathname = window.location.pathname) {
         await import('./views/createListing.js');
         console.log('Loaded createListing.js');
         break;
+      case '/search/index.html':
+        await import('./views/search.js');
+        console.log('Loaded search.js');
+        break;
     }
   } catch (error) {
     console.error('Error in router:', error);
