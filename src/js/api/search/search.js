@@ -27,11 +27,20 @@ export async function search(query) {
   }
 }
 
-export async function renderSearchResults(container, results) {
+export async function renderSearchResults(container, results, query) {
   container.innerHTML = '';
+  container.classList.add('mt-3');
+
+  const heading = document.createElement('h2');
+  heading.className = 'search-results-heading font-headingMd text-md mt-4 mb-2';
+  heading.textContent = `Search results for "${query}":`;
+  container.appendChild(heading);
 
   if (results.length === 0) {
-    container.textContent = 'No listings found.';
+    const noResultsMessage = document.createElement('p');
+    noResultsMessage.className = 'no-results-message font-body text-sm';
+    noResultsMessage.textContent = 'No listings found.';
+    container.appendChild(noResultsMessage);
     return;
   }
 
@@ -70,9 +79,9 @@ export function attachSearchHandler(inputElement, resultsContainer) {
       const results = await search(query);
 
       if (results && results.data) {
-        renderSearchResults(resultsContainer, results.data);
+        renderSearchResults(resultsContainer, results.data, query);
       } else {
-        renderSearchResults(resultsContainer, []);
+        renderSearchResults(resultsContainer, [], query);
       }
     } catch (error) {
       console.error('Search error:', error.message);
