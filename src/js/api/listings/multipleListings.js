@@ -27,7 +27,6 @@ export async function fetchListings(limit = 12, page = 1) {
     }
 
     const { data, meta } = await response.json();
-    console.log(data);
 
     if (meta.isLastPage) {
       isLastPage = true;
@@ -46,6 +45,7 @@ export async function fetchListings(limit = 12, page = 1) {
 }
 
 function renderListings(listings) {
+  listings.sort((a, b) => new Date(b.created) - new Date(a.created));
   listings.forEach((listing) => {
     const listingElement = document.createElement('div');
     listingElement.classList.add('listing-item');
