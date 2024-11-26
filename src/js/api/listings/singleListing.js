@@ -1,5 +1,6 @@
 import { API_AUCTION_LISTINGS } from '../constants.js';
 import { headers } from '../headers.js';
+import { deleteListing } from '../listings/delete.js';
 
 export async function fetchListing() {
   const listingId = new URLSearchParams(window.location.search).get('id');
@@ -163,13 +164,15 @@ async function displaySingleAuction(listing) {
   `;
   container.appendChild(auctionDetails);
 
-  const editListing = document.createElement('div');
+  const editListing = document.createElement('button');
   editListing.textContent = 'Edit Listing';
   editListing.classList.add(
     'bg-accent',
     'text-white',
+    'font-accentFont',
+    'text-sm',
     'p-2',
-    'w-24',
+    'w-28',
     'shadow-xl',
     'mt-8',
     'cursor-pointer',
@@ -184,7 +187,28 @@ async function displaySingleAuction(listing) {
     editListing.addEventListener('click', () => {
       window.location.href = `/listing/edit/index.html?id=${listing.data.id}`;
     });
+
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete Listing';
+    deleteButton.classList.add(
+      'bg-customRed',
+      'py-2',
+      'px-3',
+      'font-accentFont',
+      'ml-3',
+      'text-white',
+      'text-sm'
+    );
+    deleteButton.onclick = function () {
+      const confirmed = confirm('Are you sure you want to delete this post?');
+      if (confirmed) {
+        console.log('Deleting auction listing with ID:', listing.data.id);
+        deleteListing(listing.data.id);
+      }
+    };
+
     container.appendChild(editListing);
+    container.appendChild(deleteButton);
   }
 
   addBidsContainerWhenToken(listing);
@@ -306,5 +330,3 @@ export async function placeBid(formData) {
     alert('Error placing bid: ' + error.message);
   }
 }
-
-function createDeleteButton() {}
