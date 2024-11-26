@@ -56,7 +56,7 @@ export async function updateListing(listingId, { title, description, media }) {
       headers: requestHeaders,
 
       body: JSON.stringify({
-        title: title || '', // Ensure these fields are not undefined
+        title: title || '',
         description: description || '',
         media:
           Array.isArray(media) && media.length > 0
