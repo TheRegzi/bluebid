@@ -2,18 +2,19 @@ import { API_AUCTION_LISTINGS } from '../constants.js';
 import { headers } from '../headers.js';
 
 export async function fetchListing() {
-  const postId = new URLSearchParams(window.location.search).get('id');
+  const listingId = new URLSearchParams(window.location.search).get('id');
 
-  if (!postId) {
-    console.error('Post ID not found in the URL');
+  if (!listingId) {
+    console.error('Listing ID not found in the URL');
     return;
   }
 
-  const apiUrl = `${API_AUCTION_LISTINGS}/${postId}`;
+  const apiUrl = `${API_AUCTION_LISTINGS}/${listingId}`;
 
   try {
     const url = new URL(apiUrl);
     url.searchParams.append('_bids', 'true');
+    url.searchParams.append('_seller', 'true');
 
     const response = await fetch(url, {
       method: 'GET',
@@ -123,6 +124,7 @@ function showSlides(n) {
 }
 
 async function displaySingleAuction(listing) {
+  console.log(listing);
   if (!listing) {
     console.error('Invalid listing data:', listing);
     return;
@@ -160,6 +162,30 @@ async function displaySingleAuction(listing) {
     </div>
   `;
   container.appendChild(auctionDetails);
+
+  const editListing = document.createElement('div');
+  editListing.textContent = 'Edit Listing';
+  editListing.classList.add(
+    'bg-accent',
+    'text-white',
+    'p-2',
+    'w-24',
+    'shadow-xl',
+    'mt-8',
+    'cursor-pointer',
+    'hover:bg-secondary',
+    'transition-all'
+  );
+
+  const token = localStorage.getItem('userToken');
+  const currentUser = localStorage.getItem('name');
+
+  if (token && currentUser === listing.data.seller.name) {
+    editListing.addEventListener('click', () => {
+      window.location.href = `/listing/edit/index.html?id=${listing.data.id}`;
+    });
+    container.appendChild(editListing);
+  }
 
   addBidsContainerWhenToken(listing);
 }
@@ -231,14 +257,14 @@ async function addBidsContainerWhenToken(listing) {
 }
 
 export async function placeBid(formData) {
-  const postId = new URLSearchParams(window.location.search).get('id');
+  const listingId = new URLSearchParams(window.location.search).get('id');
 
-  if (!postId) {
-    alert('Invalid post ID. Cannot place bid.');
+  if (!listingId) {
+    alert('Invalid listing ID. Cannot place bid.');
     return;
   }
 
-  const apiUrl = `${API_AUCTION_LISTINGS}/${postId}/bids`;
+  const apiUrl = `${API_AUCTION_LISTINGS}/${listingId}/bids`;
   const bidInput = formData.get('bid-input');
 
   if (!bidInput || isNaN(bidInput) || parseFloat(bidInput) <= 0) {
@@ -280,3 +306,5 @@ export async function placeBid(formData) {
     alert('Error placing bid: ' + error.message);
   }
 }
+
+function createDeleteButton() {}
