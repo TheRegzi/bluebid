@@ -1,3 +1,6 @@
+import { API_AUCTION_LISTINGS } from '../constants';
+import { headers } from '../headers';
+
 export async function addBidsContainerWhenToken(listing) {
   const bidsContainer = document.getElementById('bids-container');
   const token = localStorage.getItem('userToken');
@@ -133,14 +136,13 @@ export function initializeBidCreation() {
       if (isSuccess) {
         console.log('Bid creation handled successfully');
         alert('Bid created successfully!');
+        window.location.reload();
       }
     } catch (error) {
       console.error('Unexpected error during bid creation:', error);
     }
   });
 }
-
-initializeBidCreation();
 
 export function updateBidContainerBasedOnAuth() {
   const bidHeading = document.getElementById('bid-heading');
@@ -158,5 +160,3 @@ export function updateBidContainerBasedOnAuth() {
     loginLink.classList.add('hidden');
   }
 }
-
-updateBidContainerBasedOnAuth();
