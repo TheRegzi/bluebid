@@ -1,3 +1,3 @@
-import { updateListing } from '../../api/listings/editListing';
+import { initializeSubmitButton } from '../../api/listings/editListing';
 
-updateListing();
+initializeSubmitButton();
