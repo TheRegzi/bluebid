@@ -4,7 +4,10 @@ export async function search(query) {
   const apiUrl = `${API_AUCTION_LISTINGS}/search?q=${encodeURIComponent(query)}`;
 
   try {
-    const response = await fetch(apiUrl, {
+    const url = new URL(apiUrl);
+    url.searchParams.append('_bids', 'true');
+
+    const response = await fetch(url, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -47,11 +50,29 @@ export async function renderSearchResults(container, results, query) {
   results.forEach((result) => {
     const resultElement = document.createElement('div');
     resultElement.className = 'result-item';
-    resultElement.classList.add('mt-2');
+    resultElement.classList.add(
+      'my-4',
+      'bg-secondary',
+      'rounded-lg',
+      'p-5',
+      'shadow-xl',
+      'flex',
+      'flex-row'
+    );
+    console.log(result);
 
     resultElement.innerHTML = `
-        <h3>${result.title}</h3>
-        <p>${result.description || 'No description available.'}</p>
+    <a href='/listing/index.html?id=${result.id}'>
+    <div class='flex flex-row'>
+    <div class='flex-col'>
+        <h3 class='font-headingMd font-medium text-md text-shadow'>${result.title}</h3>
+        <p class=''>Current Bid: ${result.bids?.length > 0 ? result.bids[result.bids.length - 1].amount : 0} Credits</p>
+        </div>
+        <div class='flex'>
+        <img src="${result?.media[0]?.url || 'https://img.freepik.com/free-vector/flat-design-no-photo-sign_23-2149272417.jpg?t=st=1732025243~exp=1732028843~hmac=90885c767238b4085c78b33d2e8a8113608c31d3256c30818a26717515635287&w=826'}" alt="${result.alt} class='w-full h-4/5">
+        </div>
+        </div>
+        </a>
       `;
 
     container.appendChild(resultElement);
