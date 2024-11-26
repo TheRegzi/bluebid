@@ -56,20 +56,19 @@ export async function renderSearchResults(container, results, query) {
       'rounded-lg',
       'p-5',
       'shadow-xl',
-      'flex',
-      'flex-row'
+      'flex'
     );
     console.log(result);
 
     resultElement.innerHTML = `
     <a href='/listing/index.html?id=${result.id}'>
     <div class='flex flex-row'>
-    <div class='flex-col'>
+    <div class='flex-col w-56 sm:w-96 pt-3 sm:pt-5'>
         <h3 class='font-headingMd font-medium text-md text-shadow'>${result.title}</h3>
-        <p class=''>Current Bid: ${result.bids?.length > 0 ? result.bids[result.bids.length - 1].amount : 0} Credits</p>
+        <p class='font-body text-sm'>Current Bid: ${result.bids?.length > 0 ? result.bids[result.bids.length - 1].amount : 0} Credits</p>
         </div>
-        <div class='flex'>
-        <img src="${result?.media[0]?.url || 'https://img.freepik.com/free-vector/flat-design-no-photo-sign_23-2149272417.jpg?t=st=1732025243~exp=1732028843~hmac=90885c767238b4085c78b33d2e8a8113608c31d3256c30818a26717515635287&w=826'}" alt="${result.alt} class='w-full h-4/5">
+        <div class=''>
+        <img src="${result?.media[0]?.url || 'https://img.freepik.com/free-vector/flat-design-no-photo-sign_23-2149272417.jpg?t=st=1732025243~exp=1732028843~hmac=90885c767238b4085c78b33d2e8a8113608c31d3256c30818a26717515635287&w=826'}" alt="${result.alt}" class='w-24 h-20 sm:w-28 sm:h-24 object-cover rounded-lg'>
         </div>
         </div>
         </a>
