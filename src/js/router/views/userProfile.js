@@ -1,3 +1,7 @@
-import { displayLoggedInUserProfile } from '../../api/profile/userProfile';
+import {
+  displayLoggedInUserProfile,
+  addUsersAuctionListings,
+} from '../../api/profile/userProfile';
 
 displayLoggedInUserProfile();
+addUsersAuctionListings();

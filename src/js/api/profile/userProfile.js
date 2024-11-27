@@ -30,7 +30,7 @@ export async function fetchUserProfile() {
   }
 }
 
-export async function displayLoggedInUserProfile(data) {
+export async function displayLoggedInUserProfile() {
   const profileData = await fetchUserProfile();
   console.log(profileData);
 
@@ -119,7 +119,7 @@ export async function displayLoggedInUserProfile(data) {
   );
   credits.appendChild(moneyBagImage);
 
-  const username = document.createElement('h2');
+  const username = document.createElement('h1');
   username.textContent = profileData.name;
   username.classList.add(
     'text-lg',
@@ -160,5 +160,78 @@ export async function displayLoggedInUserProfile(data) {
 }
 
 export async function addUsersAuctionListings() {
+  const profileData = await fetchUserProfile();
+
   const auctionContainer = document.getElementById('auction-listings');
+  auctionContainer.innerHTML = '';
+  auctionContainer.classList.add(
+    'flex',
+    'flex-col',
+    'justify-center',
+    'items-center',
+    'w-full'
+  );
+
+  const auctionElement = document.createElement('div');
+  auctionElement.classList.add(
+    'flex',
+    'flex-col',
+    'mx-auto',
+    'justify-center',
+    'text-center',
+    'align-center',
+    'w-full',
+    'sm:w-550'
+  );
+
+  if (!profileData || !Array.isArray(profileData.listings)) {
+    const errorMessage = document.createElement('p');
+    errorMessage.textContent = 'No auction listings available to display.';
+    errorMessage.classList.add('text-gray-500', 'text-center', 'mt-5');
+    auctionContainer.appendChild(errorMessage);
+    return;
+  }
+
+  if (profileData.listings.length > 0) {
+    const auctionHeading = document.createElement('h2');
+    auctionHeading.textContent = 'My Auction Listings';
+    auctionHeading.classList.add();
+
+    auctionElement.appendChild(auctionHeading);
+
+    profileData.listings.sort(
+      (a, b) => new Date(b.created) - new Date(a.created)
+    );
+    profileData.listings.forEach((listing) => {
+      const listingElement = document.createElement('div');
+      listingElement.classList.add(
+        'flex',
+        'flex-col',
+        'my-4',
+        'bg-secondary',
+        'rounded-lg',
+        'p-4',
+        'shadow-xl',
+        'w-350',
+        'mx-auto'
+      );
+
+      listingElement.innerHTML = `
+        <a href='/listing/index.html?id=${listing.id}'>
+    <div class='flex flex-row'>
+    <div class='flex-col w-56 pt-3'>
+        <h3 class='font-headingMd font-medium text-md text-shadow text-left'>${listing.title}</h3>
+        <p class='font-body text-sm text-left'>Current Bid: ${listing.bids?.length > 0 ? result.bids[result.bids.length - 1].amount : 0} Credits</p>
+        </div>
+        <div class=''>
+        <img src="${listing?.media[0]?.url || 'https://img.freepik.com/free-vector/flat-design-no-photo-sign_23-2149272417.jpg?t=st=1732025243~exp=1732028843~hmac=90885c767238b4085c78b33d2e8a8113608c31d3256c30818a26717515635287&w=826'}" alt="Auction Image" class='w-24 h-20 object-cover rounded-lg'>
+        </div>
+        </div>
+        </a>
+      `;
+      auctionElement.appendChild(listingElement);
+    });
+  }
+
+  auctionContainer.appendChild(auctionElement);
 }
