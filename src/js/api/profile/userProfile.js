@@ -6,8 +6,11 @@ export async function fetchUserProfile() {
   const apiUrl = `${API_AUCTION_PROFILES}/${username}`;
 
   try {
+    const url = new URL(apiUrl);
+    url.searchParams.append('_listings', 'true');
+
     const requestHeaders = await headers();
-    const response = await fetch(apiUrl, {
+    const response = await fetch(url, {
       method: 'GET',
       headers: requestHeaders,
     });
@@ -145,7 +148,7 @@ export async function displayLoggedInUserProfile(data) {
   );
 
   editButton.addEventListener('click', () => {
-    window.location.href = '/profile/edit/index.html'; // Replace with your desired URL
+    window.location.href = '/profile/edit/index.html';
   });
 
   profileElement.appendChild(credits);
@@ -154,4 +157,8 @@ export async function displayLoggedInUserProfile(data) {
   profileElement.appendChild(editButton);
 
   container.appendChild(profileElement);
+}
+
+export async function addUsersAuctionListings() {
+  const auctionContainer = document.getElementById('auction-listings');
 }
