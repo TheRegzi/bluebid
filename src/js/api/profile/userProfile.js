@@ -1,9 +1,9 @@
 import { headers } from '../headers';
-import { API_SOCIAL_PROFILES } from '../constants';
+import { API_AUCTION_PROFILES } from '../constants';
 
 export async function fetchUserProfile() {
   const username = localStorage.getItem('name');
-  const apiUrl = `${API_SOCIAL_PROFILES}/${username}`;
+  const apiUrl = `${API_AUCTION_PROFILES}/${username}`;
 
   try {
     const requestHeaders = await headers();
@@ -33,18 +33,28 @@ export async function displayLoggedInUserProfile(data) {
 
   const container = document.getElementById('profile-container');
   container.innerHTML = '';
+  container.classList.add('flex', 'justify-center', 'items-center', 'w-full');
 
   const profileElement = document.createElement('div');
-  profileElement.classList.add('profile');
+  profileElement.classList.add(
+    'flex',
+    'flex-col',
+    'mx-auto',
+    'justify-center',
+    'text-center',
+    'align-center',
+    'w-full',
+    'sm:w-550'
+  );
 
   if (profileData.banner && profileData.banner.url) {
     const bannerImage = document.createElement('img');
     bannerImage.src = profileData.banner.url;
     bannerImage.alt = profileData.banner.alt || 'Profile Banner';
     bannerImage.classList.add(
-      'w-350',
+      'w-full',
       'sm:w-550',
-      'h-44',
+      'h-56',
       'object-cover',
       'mt-0'
     );
@@ -56,10 +66,21 @@ export async function displayLoggedInUserProfile(data) {
     const image = document.createElement('img');
     image.src = profileData.avatar.url;
     image.alt = profileData.avatar.alt || 'Profile Avatar';
-    image.classList.add('rounded-full', 'w-44', 'h-44');
+    image.classList.add(
+      'rounded-full',
+      'w-36',
+      'h-36',
+      'justify-center',
+      'mx-auto',
+      'absolute',
+      'left-1/2',
+      '-translate-x-1/2'
+    );
 
     profileElement.appendChild(image);
   }
+
+  const credits = document.createElement('div');
 
   const username = document.createElement('h2');
   username.textContent = profileData.name;
@@ -67,7 +88,7 @@ export async function displayLoggedInUserProfile(data) {
     'text-lg',
     'font-headingMd',
     'font-medium',
-    'my-3',
+    'mt-28',
     'text-black'
   );
 
@@ -82,7 +103,10 @@ export async function displayLoggedInUserProfile(data) {
     'text-white',
     'px-4',
     'py-2',
-    'font-accentFont'
+    'font-accentFont',
+    'w-32',
+    'mx-auto',
+    'mt-4'
   );
 
   profileElement.appendChild(username);
