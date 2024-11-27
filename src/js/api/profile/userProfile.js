@@ -44,7 +44,14 @@ export async function displayLoggedInUserProfile(data) {
     'text-center',
     'align-center',
     'w-full',
-    'sm:w-550'
+    'sm:w-550',
+    'sm:border-l-4',
+    'sm:border-r-4',
+    'sm:border-b-4',
+    'border-secondary',
+    'rounded-xl',
+    'pb-10',
+    'mb-5'
   );
 
   if (profileData.banner && profileData.banner.url) {
@@ -74,13 +81,40 @@ export async function displayLoggedInUserProfile(data) {
       'mx-auto',
       'absolute',
       'left-1/2',
-      '-translate-x-1/2'
+      '-translate-x-1/2',
+      '-translate-y-14',
+      'shadow-lg'
     );
 
     profileElement.appendChild(image);
   }
 
+  const moneyBagImage = document.createElement('img');
+  moneyBagImage.src = '/assets/money-bag.png';
+  moneyBagImage.alt = 'Money Bag Icon';
+  moneyBagImage.classList.add('w-6', 'h-6');
+
   const credits = document.createElement('div');
+  credits.textContent = `${profileData.credits} Credits`;
+  credits.classList.add(
+    'border-4',
+    'border-secondary',
+    'mt-24',
+    'relative',
+    'w-52',
+    'mx-auto',
+    'font-accentFont',
+    'font-medium',
+    'rounded-lg',
+    'px-6',
+    'py-2',
+    'flex',
+    'gap-1',
+    'justify-center',
+    'text-md',
+    'shadow-xl'
+  );
+  credits.appendChild(moneyBagImage);
 
   const username = document.createElement('h2');
   username.textContent = profileData.name;
@@ -88,13 +122,14 @@ export async function displayLoggedInUserProfile(data) {
     'text-lg',
     'font-headingMd',
     'font-medium',
-    'mt-28',
-    'text-black'
+    'mt-8',
+    'text-black',
+    'text-shadow-lg'
   );
 
   const content = document.createElement('p');
   content.textContent = profileData.bio;
-  content.classList.add('text-sm', 'font-body', 'mb-3');
+  content.classList.add('text-sm', 'font-body', 'my-4');
 
   const editButton = document.createElement('button');
   editButton.textContent = 'Edit Profile';
@@ -109,6 +144,11 @@ export async function displayLoggedInUserProfile(data) {
     'mt-4'
   );
 
+  editButton.addEventListener('click', () => {
+    window.location.href = '/profile/edit/index.html'; // Replace with your desired URL
+  });
+
+  profileElement.appendChild(credits);
   profileElement.appendChild(username);
   profileElement.appendChild(content);
   profileElement.appendChild(editButton);
