@@ -80,6 +80,7 @@ export async function displayLoggedInUserProfile() {
       'rounded-full',
       'w-36',
       'h-36',
+      'object-cover',
       'justify-center',
       'mx-auto',
       'absolute',
