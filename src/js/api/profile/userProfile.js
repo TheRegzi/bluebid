@@ -169,7 +169,8 @@ export async function addUsersAuctionListings() {
     'flex-col',
     'justify-center',
     'items-center',
-    'w-full'
+    'w-full',
+    'mb-5'
   );
 
   const auctionElement = document.createElement('div');
@@ -181,7 +182,8 @@ export async function addUsersAuctionListings() {
     'text-center',
     'align-center',
     'w-full',
-    'sm:w-550'
+    'sm:w-550',
+    'mt-5'
   );
 
   if (!profileData || !Array.isArray(profileData.listings)) {
@@ -195,7 +197,12 @@ export async function addUsersAuctionListings() {
   if (profileData.listings.length > 0) {
     const auctionHeading = document.createElement('h2');
     auctionHeading.textContent = 'My Auction Listings';
-    auctionHeading.classList.add();
+    auctionHeading.classList.add(
+      'font-headingMd',
+      'font-medium',
+      'text-lg',
+      'mb-2'
+    );
 
     auctionElement.appendChild(auctionHeading);
 
@@ -218,14 +225,14 @@ export async function addUsersAuctionListings() {
 
       listingElement.innerHTML = `
         <a href='/listing/index.html?id=${listing.id}'>
-    <div class='flex flex-row'>
-    <div class='flex-col w-56 pt-3'>
-        <h3 class='font-headingMd font-medium text-md text-shadow text-left'>${listing.title}</h3>
-        <p class='font-body text-sm text-left'>Current Bid: ${listing.bids?.length > 0 ? result.bids[result.bids.length - 1].amount : 0} Credits</p>
-        </div>
-        <div class=''>
-        <img src="${listing?.media[0]?.url || 'https://img.freepik.com/free-vector/flat-design-no-photo-sign_23-2149272417.jpg?t=st=1732025243~exp=1732028843~hmac=90885c767238b4085c78b33d2e8a8113608c31d3256c30818a26717515635287&w=826'}" alt="Auction Image" class='w-24 h-20 object-cover rounded-lg'>
-        </div>
+        <div class='flex flex-row'>
+            <div class='flex-col w-56 pt-3'>
+                <h3 class='font-headingMd font-medium text-md text-shadow text-left'>${listing.title}</h3>
+                    <p class='font-body text-sm text-left'>Current Bid: ${listing.bids?.length > 0 ? result.bids[result.bids.length - 1].amount : 0} Credits</p>
+            </div>
+            <div class=''>
+                <img src="${listing?.media[0]?.url || 'https://img.freepik.com/free-vector/flat-design-no-photo-sign_23-2149272417.jpg?t=st=1732025243~exp=1732028843~hmac=90885c767238b4085c78b33d2e8a8113608c31d3256c30818a26717515635287&w=826'}" alt="Auction Image" class='w-24 h-20 object-cover rounded-lg'>
+            </div>
         </div>
         </a>
       `;
