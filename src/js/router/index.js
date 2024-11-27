@@ -34,6 +34,10 @@ export default async function router(pathname = window.location.pathname) {
         await import('../router/views/userProfile.js');
         console.log('Loaded userProfile.js');
         break;
+      case '/profile/edit/index.html':
+        await import('../router/views/updateProfile.js');
+        console.log('Loaded updateProfile.js');
+        break;
     }
   } catch (error) {
     console.error('Error in router:', error);
