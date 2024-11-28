@@ -1,13 +1,13 @@
 export function logOutUser() {
-  const logOutButton = document.getElementById('logOut');
+  const logOutButtons = document.querySelectorAll('.logOut');
 
-  if (logOutButton) {
-    logOutButton.addEventListener('click', () => {
-      localStorage.removeItem('userToken');
-      localStorage.removeItem('name');
-      window.location.href = '/auth/login/index.html';
+  if (logOutButtons.length > 0) {
+    logOutButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        localStorage.removeItem('userToken');
+        localStorage.removeItem('name');
+        window.location.href = '/auth/login/index.html';
+      });
     });
-  } else {
-    console.error('Log out button not found');
   }
 }
