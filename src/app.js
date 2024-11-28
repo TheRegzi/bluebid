@@ -18,9 +18,9 @@ toggleHamburgerMenu();
 
 const logInLinks = document.querySelectorAll('.logIn');
 const registerLinks = document.querySelectorAll('.register');
-const createAuction = document.getElementById('createAuction');
-const myProfile = document.getElementById('myProfile');
-const logOutButton = document.getElementById('logOut');
+const createAuctionLinks = document.querySelectorAll('.createAuction');
+const myProfileLinks = document.querySelectorAll('.myProfile');
+const logOutButtons = document.querySelectorAll('.logOut');
 
 function updateUIBasedOnAuth() {
   const token = localStorage.getItem('userToken');
@@ -28,15 +28,15 @@ function updateUIBasedOnAuth() {
   if (!token) {
     logInLinks.forEach((link) => link.classList.remove('hidden'));
     registerLinks.forEach((link) => link.classList.remove('hidden'));
-    if (createAuction) createAuction.classList.add('hidden');
-    if (myProfile) myProfile.classList.add('hidden');
-    if (logOutButton) logOutButton.classList.add('hidden');
+    createAuctionLinks.forEach((link) => link.classList.add('hidden'));
+    myProfileLinks.forEach((link) => link.classList.add('hidden'));
+    logOutButtons.forEach((button) => button.classList.add('hidden'));
   } else {
     logInLinks.forEach((link) => link.classList.add('hidden'));
     registerLinks.forEach((link) => link.classList.add('hidden'));
-    if (createAuction) createAuction.classList.remove('hidden');
-    if (myProfile) myProfile.classList.remove('hidden');
-    if (logOutButton) logOutButton.classList.remove('hidden');
+    createAuctionLinks.forEach((link) => link.classList.remove('hidden'));
+    myProfileLinks.forEach((link) => link.classList.remove('hidden'));
+    logOutButtons.forEach((button) => button.classList.remove('hidden'));
   }
 }
 
