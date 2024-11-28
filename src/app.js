@@ -5,24 +5,19 @@ import { logOutUser } from './js/api/auth/logout';
 await router(window.location.pathname);
 logOutUser();
 
-const hamburgerButton = document.getElementById('hamburger-button');
-const content = document.getElementById('hamburger-content');
-if (hamburgerButton && content) {
-  hamburgerButton.addEventListener('click', () => {
-    if (content.classList.contains('hidden')) {
-      content.classList.remove('hidden');
-      content.classList.add('visible');
-    } else {
-      content.classList.remove('visible');
-      content.classList.add('hidden');
-    }
+function toggleHamburgerMenu() {
+  const menuButton = document.getElementById('menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuButton.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
   });
-} else {
-  console.error('Hamburger button or content not found in the DOM.');
 }
 
-const logIn = document.getElementById('logIn');
-const register = document.getElementById('register');
+toggleHamburgerMenu();
+
+const logInLinks = document.querySelectorAll('.logIn');
+const registerLinks = document.querySelectorAll('.register');
 const createAuction = document.getElementById('createAuction');
 const myProfile = document.getElementById('myProfile');
 const logOutButton = document.getElementById('logOut');
@@ -31,15 +26,17 @@ function updateUIBasedOnAuth() {
   const token = localStorage.getItem('userToken');
 
   if (!token) {
-    createAuction.classList.add('hidden');
-    myProfile.classList.add('hidden');
-    logOutButton.classList.add('hidden');
+    logInLinks.forEach((link) => link.classList.remove('hidden'));
+    registerLinks.forEach((link) => link.classList.remove('hidden'));
+    if (createAuction) createAuction.classList.add('hidden');
+    if (myProfile) myProfile.classList.add('hidden');
+    if (logOutButton) logOutButton.classList.add('hidden');
   } else {
-    createAuction.classList.remove('hidden');
-    myProfile.classList.remove('hidden');
-    logOutButton.classList.remove('hidden');
-    logIn.classList.add('hidden');
-    register.classList.add('hidden');
+    logInLinks.forEach((link) => link.classList.add('hidden'));
+    registerLinks.forEach((link) => link.classList.add('hidden'));
+    if (createAuction) createAuction.classList.remove('hidden');
+    if (myProfile) myProfile.classList.remove('hidden');
+    if (logOutButton) logOutButton.classList.remove('hidden');
   }
 }
 
