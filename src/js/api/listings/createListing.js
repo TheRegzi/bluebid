@@ -1,5 +1,6 @@
 import { API_AUCTION_LISTINGS } from '../constants';
 import { headers } from '../headers';
+import { displayError } from '../../UI/error';
 
 export async function createListing(formData) {
   const apiUrl = API_AUCTION_LISTINGS;
@@ -36,7 +37,7 @@ export async function createListing(formData) {
     }
 
     const data = await response.json();
-    console.log('Created Listing:', data.data);
+    console.log('Listing successfully created.');
     return data;
   } catch (error) {
     console.error('Error creating post:', error);
@@ -47,12 +48,14 @@ export async function createListing(formData) {
 export async function handleCreateListing(formData) {
   try {
     const result = await createListing(formData);
-    console.log('Post created successfully:', result);
+    console.log('Post created successfully.');
     window.location.href = '/index.html';
     return true;
   } catch (error) {
     console.error('Failed to create listing:', error);
-    alert('Failed to create listing: ' + error.message);
+    displayError(
+      'Failed to create listing. Make sure to set a valid deadline date.'
+    );
     return false;
   }
 }
