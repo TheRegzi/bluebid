@@ -145,7 +145,10 @@ export async function displayLoggedInUserProfile() {
     'font-accentFont',
     'w-32',
     'mx-auto',
-    'mt-4'
+    'mt-4',
+    'transition',
+    'hover:bg-blue-500',
+    'hover:scale-110'
   );
 
   editButton.addEventListener('click', () => {
