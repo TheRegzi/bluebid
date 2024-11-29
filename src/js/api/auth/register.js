@@ -1,4 +1,5 @@
 import { API_AUTH_REGISTER } from '../constants';
+import { displayError } from '../../UI/error';
 
 export async function register({ name, email, password, bio, avatar, banner }) {
   const apiUrl = API_AUTH_REGISTER;
@@ -68,10 +69,9 @@ export async function onRegister(event) {
 
   try {
     const response = await register(registrationData);
-    alert('Registration successful!');
     window.location.href = '/auth/login/index.html';
   } catch (error) {
     console.error('Registration error:', error);
-    alert(error.message);
+    displayError(error.message);
   }
 }

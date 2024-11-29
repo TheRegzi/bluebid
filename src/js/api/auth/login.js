@@ -1,4 +1,5 @@
 import { API_AUTH_LOGIN } from '../constants';
+import { displayError } from '../../UI/error';
 
 export async function login({ email, password }) {
   const apiUrl = API_AUTH_LOGIN;
@@ -37,7 +38,6 @@ export async function onLogin(event) {
 
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
-  const error = document.getElementById('error');
 
   const loginData = {
     email: email,
@@ -60,20 +60,11 @@ export async function onLogin(event) {
       displayError(
         'Login failed. User not found. Please check your username and try again.'
       );
-      error.classList.add('customRed');
     }
   } catch (error) {
     console.error('Login error:', error);
     displayError(
       'Login failed. User not found. Please check your username and try again.'
     );
-  }
-}
-
-function displayError(message) {
-  if (error) {
-    error.innerHTML =
-      `<i class="fa-solid fa-triangle-exclamation"></i> ` + message;
-    error.classList.add('text-red-500', 'mt-4', 'font-medium', 'text-sm');
   }
 }
