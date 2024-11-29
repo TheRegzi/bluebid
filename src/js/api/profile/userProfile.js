@@ -52,7 +52,7 @@ export async function displayLoggedInUserProfile() {
     'sm:border-r-4',
     'sm:border-b-4',
     'border-secondary',
-    'rounded-xl',
+    'rounded-b-xl',
     'pb-10',
     'mb-5'
   );
@@ -202,7 +202,8 @@ export async function addUsersAuctionListings() {
       'font-headingMd',
       'font-medium',
       'text-lg',
-      'mb-2'
+      'mb-2',
+      'text-shadow-lg'
     );
 
     auctionElement.appendChild(auctionHeading);
