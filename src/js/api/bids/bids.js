@@ -1,6 +1,7 @@
 import { API_AUCTION_LISTINGS } from '../constants';
 import { headers } from '../headers';
 import { displayError } from '../../UI/error';
+import { fetchListing } from '../listings/singleListing';
 
 export async function addBidsContainerWhenToken(listing) {
   const bidsContainer = document.getElementById('bids-container');
@@ -138,12 +139,21 @@ export function initializeBidCreation() {
   });
 }
 
-export function updateBidContainerBasedOnAuth() {
+export async function updateBidContainerBasedOnAuthAndDeadline() {
   const bidHeading = document.getElementById('bid-heading');
   const bidBody = document.getElementById('bid-body');
   const bidForm = document.getElementById('bid-form');
   const loginLink = document.getElementById('login-link');
   const token = localStorage.getItem('userToken');
+  const listing = await fetchListing();
+  const deadline = new Date(listing.data.endsAt);
+  const currentDate = new Date();
+  const biddingContainer = document.getElementById('bidding-container');
+
+  if (currentDate > deadline) {
+    biddingContainer.classList.add('hidden');
+    return;
+  }
 
   if (!token) {
     bidHeading.textContent = 'Ready to bid?';

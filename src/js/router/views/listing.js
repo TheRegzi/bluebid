@@ -1,9 +1,13 @@
-import { fetchListing } from '../../api/listings/singleListing';
+import {
+  fetchListing,
+  displaySingleAuction,
+} from '../../api/listings/singleListing';
 import {
   initializeBidCreation,
-  updateBidContainerBasedOnAuth,
+  updateBidContainerBasedOnAuthAndDeadline,
 } from '../../api/bids/bids';
 
 fetchListing();
+displaySingleAuction();
 initializeBidCreation();
-updateBidContainerBasedOnAuth();
+updateBidContainerBasedOnAuthAndDeadline();
