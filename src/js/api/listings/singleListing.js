@@ -87,10 +87,11 @@ export async function displaySingleAuction() {
     'p-2',
     'w-28',
     'shadow-xl',
-    'mt-8',
     'cursor-pointer',
-    'hover:bg-secondary',
-    'transition-all'
+    'hover:bg-blue-500',
+    'hover:scale-110',
+    'transition',
+    'mb-10'
   );
 
   const token = localStorage.getItem('userToken');
@@ -108,10 +109,16 @@ export async function displaySingleAuction() {
       'py-2',
       'px-3',
       'font-accentFont',
-      'ml-3',
+      'ml-5',
       'text-white',
-      'text-sm'
+      'text-sm',
+      'mb-10',
+      'cursor-pointer',
+      'hover:bg-red-500',
+      'hover:scale-110',
+      'transition'
     );
+
     deleteButton.onclick = function () {
       const confirmed = confirm('Are you sure you want to delete this post?');
       if (confirmed) {
