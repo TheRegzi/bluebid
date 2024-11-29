@@ -37,6 +37,7 @@ export async function onLogin(event) {
 
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
+  const error = document.getElementById('error');
 
   const loginData = {
     email: email,
@@ -52,14 +53,27 @@ export async function onLogin(event) {
       localStorage.setItem('userToken', userToken);
       localStorage.setItem('name', name);
 
-      alert('Login successful!');
+      console.log('Login successful!');
       window.location.href = '/index.html';
     } else {
       console.log('User Token not found in response:', response);
-      alert('Login failed: Token not found.');
+      displayError(
+        'Login failed. User not found. Please check your username and try again.'
+      );
+      error.classList.add('customRed');
     }
   } catch (error) {
     console.error('Login error:', error);
-    alert(error.message);
+    displayError(
+      'Login failed. User not found. Please check your username and try again.'
+    );
+  }
+}
+
+function displayError(message) {
+  if (error) {
+    error.innerHTML =
+      `<i class="fa-solid fa-triangle-exclamation"></i> ` + message;
+    error.classList.add('text-red-500', 'mt-4', 'font-medium', 'text-sm');
   }
 }
