@@ -226,7 +226,10 @@ export async function addUsersAuctionListings() {
         'shadow-xl',
         'w-350',
         'mx-auto',
-        'justify-center'
+        'justify-center',
+        'cursor-pointer',
+        'hover:scale-110',
+        'transition'
       );
 
       listingElement.innerHTML = `
