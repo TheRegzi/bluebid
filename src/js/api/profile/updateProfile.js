@@ -1,13 +1,13 @@
 import { fetchUserProfile } from '../../api/profile/userProfile';
 import { API_AUCTION_PROFILES } from '../constants';
 import { headers } from '../headers';
+import { displayError } from '../../UI/error';
 
 export async function populateForms() {
   const profileData = await fetchUserProfile();
-  console.log(profileData);
 
   if (!profileData) {
-    alert('Failed to fetch the listing. Cannot populate form.');
+    displayError('Failed to fetch the listing. Cannot populate form.');
     return;
   }
 
@@ -42,8 +42,10 @@ export async function updateProfile(name, { bio, avatar, banner }) {
       throw new Error(`Error ${response.status}: ${errorMessage}`);
     }
   } catch (error) {
-    console.error('Failed to update the profile:', error);
-    alert(`Could not update the profile: ${error.message}`);
+    console.error('Failed to update the profile:', error.message);
+    displayError(
+      'Failed to update the profile. Please make sure you have provided valid URLs for Profile and Banner Image.'
+    );
     return;
   }
 }
