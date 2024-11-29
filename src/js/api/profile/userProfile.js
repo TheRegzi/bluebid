@@ -222,18 +222,19 @@ export async function addUsersAuctionListings() {
         'p-4',
         'shadow-xl',
         'w-350',
-        'mx-auto'
+        'mx-auto',
+        'justify-center'
       );
 
       listingElement.innerHTML = `
         <a href='/listing/index.html?id=${listing.id}'>
         <div class='flex flex-row'>
-            <div class='flex-col w-56 pt-3'>
+            <div class='flex flex-col w-56 justify-center mx-auto'>
                 <h3 class='font-headingMd font-medium text-md text-shadow text-left'>${listing.title}</h3>
-                    <p class='font-body text-sm text-left'>Current Bid: ${listing.bids?.length > 0 ? result.bids[result.bids.length - 1].amount : 0} Credits</p>
+                <p class='font-body text-sm text-left'>Current Bid: ${listing.bids?.length > 0 ? result.bids[result.bids.length - 1].amount : 0} Credits</p>
             </div>
-            <div class=''>
-                <img src="${listing?.media[0]?.url || 'https://img.freepik.com/free-vector/flat-design-no-photo-sign_23-2149272417.jpg?t=st=1732025243~exp=1732028843~hmac=90885c767238b4085c78b33d2e8a8113608c31d3256c30818a26717515635287&w=826'}" alt="Auction Image" class='w-24 h-20 object-cover rounded-lg'>
+            <div class='flex items-center'>
+                <img src="${listing?.media[0]?.url || 'https://img.freepik.com/free-vector/flat-design-no-photo-sign_23-2149272417.jpg?t=st=1732025243~exp=1732028843~hmac=90885c767238b4085c78b33d2e8a8113608c31d3256c30818a26717515635287&w=826'}" alt="Auction Image" class='w-20 h-16 object-cover rounded-lg'>
             </div>
         </div>
         </a>
