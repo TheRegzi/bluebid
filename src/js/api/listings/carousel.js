@@ -70,7 +70,6 @@ function showSlides(n) {
   const slides = document.getElementsByClassName('carousel-item');
 
   if (slides.length === 0) {
-    console.log('No slides to show.');
     return;
   }
 

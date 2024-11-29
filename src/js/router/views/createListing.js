@@ -18,7 +18,6 @@ function initializeCreateListing() {
 
       if (isSuccess) {
         console.log('Listing creation handled successfully');
-        alert('Listing created successfully!');
       }
     } catch (error) {
       console.error('Unexpected error during creation:', error);
