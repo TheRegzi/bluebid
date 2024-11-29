@@ -63,8 +63,6 @@ export async function onLogin(event) {
     }
   } catch (error) {
     console.error('Login error:', error);
-    displayError(
-      'Login failed. User not found. Please check your username and try again.'
-    );
+    displayError('Login failed: ' + error.message);
   }
 }
