@@ -37,12 +37,11 @@ export async function fetchListing() {
 }
 
 async function displaySingleAuction(listing) {
-  console.log(listing);
   if (!listing) {
     console.error('Invalid listing data:', listing);
     return;
   }
-  console.log(listing);
+
   const endsAtDate = new Date(listing.data.endsAt);
   const now = new Date();
   const hasEnded = endsAtDate < now;

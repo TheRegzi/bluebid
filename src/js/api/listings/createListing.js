@@ -48,7 +48,7 @@ export async function createListing(formData) {
 export async function handleCreateListing(formData) {
   try {
     const result = await createListing(formData);
-    console.log('Post created successfully.');
+    console.log('Listing created successfully.');
     window.location.href = '/index.html';
     return true;
   } catch (error) {

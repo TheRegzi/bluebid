@@ -1,5 +1,6 @@
 import { API_AUCTION_LISTINGS } from '../constants';
 import { headers } from '../headers';
+import { displayError } from '../../UI/error';
 
 export async function addBidsContainerWhenToken(listing) {
   const bidsContainer = document.getElementById('bids-container');
@@ -17,8 +18,9 @@ export async function addBidsContainerWhenToken(listing) {
 
   if (token && listing.data.bids.length === 0) {
     const noBidsMessage = document.createElement('p');
-    noBidsMessage.className = 'font-body text-sm text-black text-center mt-4';
-    noBidsMessage.textContent = 'No placed bids yet.';
+    noBidsMessage.className =
+      'font-body font-medium text-sm text-black text-center mt-4';
+    noBidsMessage.textContent = 'No placed bids.';
     bidsContainer.appendChild(noBidsMessage);
     return;
   }
@@ -71,17 +73,12 @@ export async function placeBid(formData) {
   const listingId = new URLSearchParams(window.location.search).get('id');
 
   if (!listingId) {
-    alert('Invalid listing ID. Cannot place bid.');
+    displayError('Invalid listing ID. Cannot place bid.');
     return;
   }
 
   const apiUrl = `${API_AUCTION_LISTINGS}/${listingId}/bids`;
   const bidInput = formData.get('bid-input');
-
-  if (!bidInput || isNaN(bidInput) || parseFloat(bidInput) <= 0) {
-    alert('Please enter a valid bid amount greater than 0.');
-    return;
-  }
 
   try {
     const requestHeaders = await headers();
@@ -95,8 +92,6 @@ export async function placeBid(formData) {
       body: JSON.stringify(payload),
     });
 
-    console.log('Response Status:', response.status);
-
     if (response.ok) {
       const result = await response.json();
       console.log('Bid placed successfully:', result);
@@ -107,14 +102,14 @@ export async function placeBid(formData) {
         'Failed to place bid:',
         JSON.stringify(errorDetails, null, 2)
       );
-      alert(
+      displayError(
         `Error placing bid: ${errorDetails.errors?.[0]?.message || errorDetails.message || 'Unknown error'}`
       );
       return null;
     }
   } catch (error) {
     console.error('Error:', error);
-    alert('Error placing bid: ' + error.message);
+    displayError('Error placing bid: ' + error.message);
   }
 }
 
@@ -134,8 +129,7 @@ export function initializeBidCreation() {
       const isSuccess = await placeBid(formData);
 
       if (isSuccess) {
-        console.log('Bid creation handled successfully');
-        alert('Bid created successfully!');
+        console.log('Bid creation handled successfully.');
         window.location.reload();
       }
     } catch (error) {
