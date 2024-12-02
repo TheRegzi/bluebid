@@ -1,10 +1,12 @@
 import { API_AUTH_REGISTER } from '../constants';
 import { displayError } from '../../UI/error';
+import { displayLoading, hideLoading } from '../../UI/loading';
 
 export async function register({ name, email, password, bio, avatar, banner }) {
   const apiUrl = API_AUTH_REGISTER;
 
   try {
+    displayLoading();
     const url = new URL(apiUrl);
 
     const response = await fetch(url, {
@@ -45,6 +47,8 @@ export async function register({ name, email, password, bio, avatar, banner }) {
   } catch (error) {
     console.error('Error during registration:', error);
     throw error;
+  } finally {
+    hideLoading();
   }
 }
 
