@@ -1,10 +1,12 @@
 import { API_AUTH_LOGIN } from '../constants';
 import { displayError } from '../../UI/error';
+import { displayLoading, hideLoading } from '../../UI/loading';
 
 export async function login({ email, password }) {
   const apiUrl = API_AUTH_LOGIN;
 
   try {
+    displayLoading();
     const url = new URL(apiUrl);
 
     const response = await fetch(url, {
@@ -30,6 +32,8 @@ export async function login({ email, password }) {
   } catch (error) {
     console.error('Login error:', error.message);
     throw error;
+  } finally {
+    hideLoading();
   }
 }
 
