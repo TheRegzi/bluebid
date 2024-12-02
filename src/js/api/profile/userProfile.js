@@ -1,13 +1,11 @@
 import { headers } from '../headers';
 import { API_AUCTION_PROFILES } from '../constants';
-import { displayLoading, hideLoading } from '../../UI/loading';
 
 export async function fetchUserProfile() {
   const username = localStorage.getItem('name');
   const apiUrl = `${API_AUCTION_PROFILES}/${username}`;
 
   try {
-    displayLoading();
     const url = new URL(apiUrl);
     url.searchParams.append('_listings', 'true');
 
@@ -29,8 +27,6 @@ export async function fetchUserProfile() {
   } catch (error) {
     console.error('Error getting profile details:', error);
     throw error;
-  } finally {
-    hideLoading();
   }
 }
 

@@ -2,6 +2,7 @@ import { fetchUserProfile } from '../../api/profile/userProfile';
 import { API_AUCTION_PROFILES } from '../constants';
 import { headers } from '../headers';
 import { displayError } from '../../UI/error';
+import { displayLoading, hideLoading } from '../../UI/loading';
 
 export async function populateForms() {
   const profileData = await fetchUserProfile();
@@ -20,6 +21,7 @@ export async function updateProfile(name, { bio, avatar, banner }) {
   const apiUrl = `${API_AUCTION_PROFILES}/${name}`;
 
   try {
+    displayLoading();
     const requestHeaders = await headers();
     const response = await fetch(apiUrl, {
       method: 'PUT',
@@ -47,6 +49,8 @@ export async function updateProfile(name, { bio, avatar, banner }) {
       'Failed to update the profile. Please make sure you have provided valid URLs for Profile and Banner Image.'
     );
     return;
+  } finally {
+    hideLoading();
   }
 }
 
