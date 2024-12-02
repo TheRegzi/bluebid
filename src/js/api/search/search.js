@@ -62,7 +62,6 @@ export async function renderSearchResults(container, results, query) {
       'shadow-xl',
       'flex'
     );
-    console.log(result);
 
     resultElement.innerHTML = `
     <a href='/listing/index.html?id=${result.id}'>
