@@ -1,6 +1,7 @@
 import { headers } from '../headers';
 import { API_AUCTION_LISTINGS } from '../constants';
 import { displayError } from '../../UI/error';
+import { displayLoading, hideLoading } from '../../UI/loading';
 
 async function fetchListing() {
   const listingId = new URLSearchParams(window.location.search).get('id');
@@ -51,6 +52,7 @@ export async function updateListing(listingId, { title, description, media }) {
   const apiUrl = `${API_AUCTION_LISTINGS}/${listingId}`;
 
   try {
+    displayLoading();
     const requestHeaders = await headers();
     const response = await fetch(apiUrl, {
       method: 'PUT',
@@ -82,6 +84,8 @@ export async function updateListing(listingId, { title, description, media }) {
     console.error('Failed to update the listing:', error);
     displayError(`Could not update the listing: ${error.message}`);
     return;
+  } finally {
+    hideLoading();
   }
 }
 
