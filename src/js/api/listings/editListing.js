@@ -1,5 +1,6 @@
 import { headers } from '../headers';
 import { API_AUCTION_LISTINGS } from '../constants';
+import { displayError } from '../../UI/error';
 
 async function fetchListing() {
   const listingId = new URLSearchParams(window.location.search).get('id');
@@ -33,7 +34,7 @@ async function populateInputs() {
   const listing = await fetchListing();
 
   if (!listing) {
-    alert('Failed to fetch the listing. Cannot populate form.');
+    displayError('Failed to fetch the listing. Cannot populate form.');
     return;
   }
 
@@ -79,7 +80,7 @@ export async function updateListing(listingId, { title, description, media }) {
     }
   } catch (error) {
     console.error('Failed to update the listing:', error);
-    alert(`Could not update the listing: ${error.message}`);
+    displayError(`Could not update the listing: ${error.message}`);
     return;
   }
 }
@@ -92,7 +93,7 @@ export function initializeSubmitButton() {
 
       const listingId = new URLSearchParams(window.location.search).get('id');
       if (!listingId) {
-        alert('No listing ID found in the URL.');
+        displayError('No listing ID found in the URL.');
         return;
       }
 
