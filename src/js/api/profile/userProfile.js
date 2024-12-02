@@ -36,7 +36,6 @@ export async function fetchUserProfile() {
 
 export async function displayLoggedInUserProfile() {
   const profileData = await fetchUserProfile();
-  console.log(profileData);
 
   const container = document.getElementById('profile-container');
   container.innerHTML = '';
