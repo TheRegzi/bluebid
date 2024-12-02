@@ -76,7 +76,7 @@ export async function displaySingleAuction() {
   const auctionDetails = document.createElement('div');
   auctionDetails.className = 'w-350 sm:w-550';
   auctionDetails.innerHTML = `
-    <h1 class="font-headingMd font-medium text-lg text-shadow-lg mt-4">${listing.data.title}</h1>
+    <h1 class="font-headingMd font-medium text-lg text-shadow-lg mt-6">${listing.data.title}</h1>
     <p class='font-body text-sm font-medium mt-4'>Current bid: ${listing.data.bids?.length > 0 ? listing.data.bids[listing.data.bids.length - 1].amount : 0} Credits</p>
     <p class='font-body text-sm mt-4'>${listing.data.description}</p>
     <div class='flex justify-center my-10'>
