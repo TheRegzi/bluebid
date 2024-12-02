@@ -1,5 +1,6 @@
 import { API_AUCTION_LISTINGS } from '../constants';
 import { headers } from '../headers';
+import { displayError } from '../../UI/error';
 
 export async function deleteListing(listingId) {
   const apiUrl = `${API_AUCTION_LISTINGS}/${listingId}`;
@@ -12,7 +13,7 @@ export async function deleteListing(listingId) {
     });
 
     if (response.status === 204) {
-      alert('Auction Listing deleted successfully.');
+      displayError('Auction Listing deleted successfully.');
       window.location.href = `/index.html`;
       return;
     } else {
@@ -20,6 +21,6 @@ export async function deleteListing(listingId) {
     }
   } catch (error) {
     console.error('Error:', error);
-    alert('Error deleting listing: ' + error.message);
+    displayError('Error deleting listing: ' + error.message);
   }
 }
