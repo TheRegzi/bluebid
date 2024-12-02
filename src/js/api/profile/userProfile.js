@@ -201,19 +201,15 @@ export async function addUsersAuctionListings() {
     return;
   }
 
+  if (profileData.listings.length === 0) {
+    const noListings = document.createElement('p');
+    noListings.textContent = 'No auction listings created yet.';
+    noListings.classList.add('font-body', 'font-medium', 'text-sm', 'mb-2');
+
+    auctionElement.appendChild(noListings);
+  }
+
   if (profileData.listings.length > 0) {
-    const auctionHeading = document.createElement('h2');
-    auctionHeading.textContent = 'My Auction Listings';
-    auctionHeading.classList.add(
-      'font-headingMd',
-      'font-medium',
-      'text-lg',
-      'mb-2',
-      'text-shadow-lg'
-    );
-
-    auctionElement.appendChild(auctionHeading);
-
     profileData.listings.sort(
       (a, b) => new Date(b.created) - new Date(a.created)
     );
