@@ -1,6 +1,7 @@
 import { API_AUCTION_LISTINGS } from '../constants';
 import { headers } from '../headers';
 import { displayError } from '../../UI/error';
+import { displayLoading, hideLoading } from '../../UI/loading';
 
 export async function createListing(formData) {
   const apiUrl = API_AUCTION_LISTINGS;
@@ -17,6 +18,7 @@ export async function createListing(formData) {
   if (image3) media.push({ url: image3, alt: 'Auction Image 3' });
 
   try {
+    displayLoading();
     const requestHeaders = await headers();
     const response = await fetch(apiUrl, {
       method: 'POST',
@@ -42,6 +44,8 @@ export async function createListing(formData) {
   } catch (error) {
     console.error('Error creating post:', error);
     throw error;
+  } finally {
+    hideLoading();
   }
 }
 
