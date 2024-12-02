@@ -1,9 +1,11 @@
 import { API_AUCTION_LISTINGS } from '../constants';
+import { displayLoading, hideLoading } from '../../UI/loading';
 
 export async function search(query) {
   const apiUrl = `${API_AUCTION_LISTINGS}/search?q=${encodeURIComponent(query)}`;
 
   try {
+    displayLoading();
     const url = new URL(apiUrl);
     url.searchParams.append('_bids', 'true');
 
@@ -27,6 +29,8 @@ export async function search(query) {
   } catch (error) {
     console.error('Search error:', error.message);
     throw error;
+  } finally {
+    hideLoading();
   }
 }
 
