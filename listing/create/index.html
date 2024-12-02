@@ -106,107 +106,109 @@
       </div>
     </header>
     <main class="flex-1 flex flex-col mx-auto">
-      <h1
-        class="flex font-headingMd font-medium text-lg justify-center mt-10 text-shadow mb-5"
-      >
-        Create an Auction Listing
-      </h1>
-      <div class="flex flex-col w-350 sm:w-550 p-2">
-        <p class="p-2 mb-2">
-          Fill in the details below to create a new auction listing. Make sure
-          to add a clear title, description, image URLs and set a deadline.
-        </p>
-        <form
-          name="create-form"
-          id="create-form"
-          class="flex flex-col w-350 sm:w-550 p-2"
+      <section>
+        <h1
+          class="flex font-headingMd font-medium text-lg justify-center mt-10 text-shadow mb-5"
         >
-          <div class="flex flex-col">
-            <label for="title" class="font-headingMd text-md mb-1"
-              >Add a Title</label
-            >
-            <input
-              type="text"
-              name="title"
-              class="border-2 border-accent rounded-md w-full p-3 mb-4 font-body text-sm"
-              id="title"
-              placeholder="Enter Title"
-              required
-            />
-          </div>
-          <div>
-            <label for="description" class="font-headingMd text-md mb-1"
-              >Add a Description</label
-            >
-            <input
-              type="text"
-              name="description"
-              class="border-2 border-accent rounded-md w-full p-3 mb-4 font-body text-sm"
-              id="description"
-              placeholder="Enter Description"
-              required
-            />
-          </div>
-          <div>
-            <label for="image1" class="font-headingMd text-md mb-1"
-              >Add Image URL 1</label
-            >
-            <input
-              type="url"
-              name="image1"
-              class="border-2 border-accent rounded-md w-full p-3 mb-4 font-body text-sm"
-              id="image1"
-              placeholder="Enter Image URL 1"
-              required
-            />
-          </div>
-          <div>
-            <label for="image2" class="font-headingMd text-md mb-1"
-              >Add Image URL 2 (Optional)</label
-            >
-            <input
-              type="url"
-              name="image2"
-              class="border-2 border-accent rounded-md w-full p-3 mb-4 font-body text-sm"
-              id="image2"
-              placeholder="Enter Image URL 2"
-            />
-          </div>
-          <div>
-            <label for="image3" class="font-headingMd text-md mb-1"
-              >Add Image URL 3 (Optional)</label
-            >
-            <input
-              type="url"
-              name="image3"
-              class="border-2 border-accent rounded-md w-full p-3 mb-4 font-body text-sm"
-              id="image3"
-              placeholder="Enter Image URL 3"
-            />
-          </div>
-          <div>
-            <label for="deadline" class="font-headingMd text-md mb-1"
-              >Add a Deadline Date</label
-            >
-            <input
-              type="date"
-              name="deadline"
-              class="border-2 border-accent rounded-md w-full p-3 mb-4 font-body text-sm"
-              id="deadline"
-              placeholder="Enter Deadline Date"
-            />
-          </div>
-          <div class="flex mx-auto justify-center mb-10">
-            <button
-              class="bg-accent text-white mt-8 px-10 py-2 font-accentFont text-sm sm:text-md"
-              type="submit"
-            >
-              Create Listing
-            </button>
-          </div>
-          <span id="error"></span>
-        </form>
-      </div>
+          Create an Auction Listing
+        </h1>
+        <div class="flex flex-col w-350 sm:w-550 p-2">
+          <p class="p-2 mb-2">
+            Fill in the details below to create a new auction listing. Make sure
+            to add a clear title, description, image URLs and set a deadline.
+          </p>
+          <form
+            name="create-form"
+            id="create-form"
+            class="flex flex-col w-350 sm:w-550 p-2"
+          >
+            <div class="flex flex-col">
+              <label for="title" class="font-headingMd text-md mb-1"
+                >Add a Title</label
+              >
+              <input
+                type="text"
+                name="title"
+                class="border-2 border-accent rounded-md w-full p-3 mb-4 font-body text-sm"
+                id="title"
+                placeholder="Enter Title"
+                required
+              />
+            </div>
+            <div>
+              <label for="description" class="font-headingMd text-md mb-1"
+                >Add a Description</label
+              >
+              <input
+                type="text"
+                name="description"
+                class="border-2 border-accent rounded-md w-full p-3 mb-4 font-body text-sm"
+                id="description"
+                placeholder="Enter Description"
+                required
+              />
+            </div>
+            <div>
+              <label for="image1" class="font-headingMd text-md mb-1"
+                >Add Image URL 1</label
+              >
+              <input
+                type="url"
+                name="image1"
+                class="border-2 border-accent rounded-md w-full p-3 mb-4 font-body text-sm"
+                id="image1"
+                placeholder="Enter Image URL 1"
+                required
+              />
+            </div>
+            <div>
+              <label for="image2" class="font-headingMd text-md mb-1"
+                >Add Image URL 2 (Optional)</label
+              >
+              <input
+                type="url"
+                name="image2"
+                class="border-2 border-accent rounded-md w-full p-3 mb-4 font-body text-sm"
+                id="image2"
+                placeholder="Enter Image URL 2"
+              />
+            </div>
+            <div>
+              <label for="image3" class="font-headingMd text-md mb-1"
+                >Add Image URL 3 (Optional)</label
+              >
+              <input
+                type="url"
+                name="image3"
+                class="border-2 border-accent rounded-md w-full p-3 mb-4 font-body text-sm"
+                id="image3"
+                placeholder="Enter Image URL 3"
+              />
+            </div>
+            <div>
+              <label for="deadline" class="font-headingMd text-md mb-1"
+                >Add a Deadline Date</label
+              >
+              <input
+                type="date"
+                name="deadline"
+                class="border-2 border-accent rounded-md w-full p-3 mb-4 font-body text-sm"
+                id="deadline"
+                placeholder="Enter Deadline Date"
+              />
+            </div>
+            <div class="flex mx-auto justify-center mb-10">
+              <button
+                class="bg-accent text-white mt-8 px-10 py-2 font-accentFont text-sm sm:text-md"
+                type="submit"
+              >
+                Create Listing
+              </button>
+            </div>
+            <span id="error"></span>
+          </form>
+        </div>
+      </section>
     </main>
     <footer
       class="bg-accent font-accent text-white text-xs sm:text-sm p-16 mt-6"

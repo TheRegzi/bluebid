@@ -106,112 +106,118 @@
       </div>
     </header>
     <main class="flex-1 flex flex-col bg-secondary">
-      <h1
-        class="flex font-headingMd font-medium text-lg justify-center mt-10 text-shadow"
-      >
-        Register to BlueBid
-      </h1>
-      <div class="flex flex-col items-center justify-center mb-10">
-        <form
-          name="register"
-          id="register"
-          class="flex flex-col items-center w-350 sm:w-550 p-2"
+      <section>
+        <h1
+          class="flex font-headingMd font-medium text-lg justify-center mt-10 text-shadow"
         >
-          <div class="w-full flex flex-col">
-            <label for="name" class="font-heading text-lg mt-3">Username</label>
-            <input
-              id="name"
-              type="name"
-              name="name"
-              autocomplete="username"
-              class="font-bod border-2 border-accent rounded-xl bg-white p-4"
-              placeholder="Enter Username"
-              required
-              maxlength="20"
-              pattern="^[\w]+$"
-              title="Please enter a username using only letters and numbers"
-            />
-          </div>
-          <div class="w-full flex flex-col">
-            <label for="email" class="font-heading text-lg mt-4">E-mail</label>
-            <input
-              id="email"
-              type="email"
-              name="email"
-              autocomplete="email"
-              class="font-body border-2 border-accent rounded-xl bg-white p-4"
-              placeholder="Enter E-mail"
-              required
-              pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
-              title="Please enter a valid stud.noroff.no address"
-            />
-          </div>
-          <div class="w-full flex flex-col">
-            <label for="password" class="font-heading text-lg mt-4"
-              >Password</label
-            >
-            <input
-              type="password"
-              name="password"
-              id="password"
-              autocomplete="current-password"
-              class="font-body border-2 border-accent rounded-xl bg-white p-4"
-              placeholder="Enter Password"
-              required
-              minlength="8"
-            />
-          </div>
-          <div class="w-full flex flex-col">
-            <label for="bio" class="font-heading text-lg mt-4"
-              >Bio (Optional)</label
-            >
-            <textarea
-              name="bio"
-              id="bio"
-              class="font-body border-2 border-accent rounded-xl bg-white p-4"
-              placeholder="Enter Bio"
-            ></textarea>
-          </div>
-          <div class="w-full flex flex-col">
-            <label for="avatarUrl" class="font-heading text-lg mt-4"
-              >Profile Image URL (Optional)</label
-            >
-            <input
-              type="url"
-              name="avatarUrl"
-              id="avatarUrl"
-              class="font-body border-2 border-accent rounded-xl bg-white p-4"
-              placeholder="Enter Profile Image URL"
-            />
-          </div>
-          <div class="w-full flex flex-col">
-            <label for="bannerUrl" class="font-heading text-lg mt-4"
-              >Banner Image URL (Optional)</label
-            >
-            <input
-              type="url"
-              name="bannerUrl"
-              id="bannerUrl"
-              class="font-body border-2 border-accent rounded-xl bg-white p-4"
-              placeholder="Enter Banner Image URL"
-            />
-          </div>
-          <button
-            class="bg-accent text-white mt-10 px-10 py-2 font-accentFont text-md sm:text-md"
+          Register to BlueBid
+        </h1>
+        <div class="flex flex-col items-center justify-center mb-10">
+          <form
+            name="register"
+            id="register"
+            class="flex flex-col items-center w-350 sm:w-550 p-2"
           >
-            Register
-          </button>
-          <span id="error"></span>
-          <p class="font-body text-sm mt-8 font-medium">
-            Already a user?
-            <a
-              class="text-accent font-semibold font-body"
-              href="/auth/login/index.html"
-              >Login here!</a
+            <div class="w-full flex flex-col">
+              <label for="name" class="font-heading text-lg mt-3"
+                >Username</label
+              >
+              <input
+                id="name"
+                type="name"
+                name="name"
+                autocomplete="username"
+                class="font-bod border-2 border-accent rounded-xl bg-white p-4"
+                placeholder="Enter Username"
+                required
+                maxlength="20"
+                pattern="^[\w]+$"
+                title="Please enter a username using only letters and numbers"
+              />
+            </div>
+            <div class="w-full flex flex-col">
+              <label for="email" class="font-heading text-lg mt-4"
+                >E-mail</label
+              >
+              <input
+                id="email"
+                type="email"
+                name="email"
+                autocomplete="email"
+                class="font-body border-2 border-accent rounded-xl bg-white p-4"
+                placeholder="Enter E-mail"
+                required
+                pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
+                title="Please enter a valid stud.noroff.no address"
+              />
+            </div>
+            <div class="w-full flex flex-col">
+              <label for="password" class="font-heading text-lg mt-4"
+                >Password</label
+              >
+              <input
+                type="password"
+                name="password"
+                id="password"
+                autocomplete="current-password"
+                class="font-body border-2 border-accent rounded-xl bg-white p-4"
+                placeholder="Enter Password"
+                required
+                minlength="8"
+              />
+            </div>
+            <div class="w-full flex flex-col">
+              <label for="bio" class="font-heading text-lg mt-4"
+                >Bio (Optional)</label
+              >
+              <textarea
+                name="bio"
+                id="bio"
+                class="font-body border-2 border-accent rounded-xl bg-white p-4"
+                placeholder="Enter Bio"
+              ></textarea>
+            </div>
+            <div class="w-full flex flex-col">
+              <label for="avatarUrl" class="font-heading text-lg mt-4"
+                >Profile Image URL (Optional)</label
+              >
+              <input
+                type="url"
+                name="avatarUrl"
+                id="avatarUrl"
+                class="font-body border-2 border-accent rounded-xl bg-white p-4"
+                placeholder="Enter Profile Image URL"
+              />
+            </div>
+            <div class="w-full flex flex-col">
+              <label for="bannerUrl" class="font-heading text-lg mt-4"
+                >Banner Image URL (Optional)</label
+              >
+              <input
+                type="url"
+                name="bannerUrl"
+                id="bannerUrl"
+                class="font-body border-2 border-accent rounded-xl bg-white p-4"
+                placeholder="Enter Banner Image URL"
+              />
+            </div>
+            <button
+              class="bg-accent text-white mt-10 px-10 py-2 font-accentFont text-md sm:text-md"
             >
-          </p>
-        </form>
-      </div>
+              Register
+            </button>
+            <span id="error"></span>
+            <p class="font-body text-sm mt-8 font-medium">
+              Already a user?
+              <a
+                class="text-accent font-semibold font-body"
+                href="/auth/login/index.html"
+                >Login here!</a
+              >
+            </p>
+          </form>
+        </div>
+      </section>
     </main>
     <footer class="bg-accent font-accent text-white text-xs sm:text-sm p-16">
       <h3 class="flex justify-center">© BlueBid corp.</h3>

@@ -106,53 +106,59 @@
       </div>
     </header>
     <main class="flex-1 flex flex-col justify-center mx-auto">
-      <div id="listing-container" class="mt-8"></div>
-      <div
-        id="bidding-container"
-        class="flex flex-col w-350 sm:w-550 bg-primary shadow-xl mb-10"
-      >
-        <h2
-          class="flex justify-center font-headingMd font-medium text-lg text-shadow-lg py-8"
-          id="bid-heading"
+      <section>
+        <div id="listing-container" class="mt-8"></div>
+      </section>
+      <section>
+        <div
+          id="bidding-container"
+          class="flex flex-col w-350 sm:w-550 bg-primary shadow-xl mb-10"
         >
-          Place Your Bid
-        </h2>
-        <p class="font-body w-72 sm:w-96 mx-auto mb-2" id="bid-body">
-          Enter your bid amount below to participate in the auction. Make sure
-          your bid is higher than the current bid to have a chance to win!
-        </p>
-        <form class="flex flex-col" id="bid-form">
-          <div class="mx-auto mt-5">
-            <label for="bid-input"></label>
-            <input
-              type="number"
-              name="bid-input"
-              id="bid-input"
-              placeholder="Enter your bid"
-              class="flex font-body border-2 border-accent bg-white py-4 px-4 mb-4 w-72 sm:w-96"
-              required
-              min="1"
-            />
-          </div>
-          <div class="mb-10">
-            <button
-              type="submit"
-              class="bg-accent text-white font-accentFont py-2 px-6 text-md flex justify-center mx-auto mt-5 cursor-pointer hover:bg-blue-500 hover:scale-110 transition"
-            >
-              Place Bid
-            </button>
-          </div>
-          <span id="error"></span>
-        </form>
-        <div class="mb-10 mx-auto flex justify-center mt-10" id="login-link">
-          <a
-            class="font-accentFont font-medium bg-accent text-white py-2 px-4 text-sm text-shadow cursor-pointer hover:bg-blue-500 hover:scale-110 transition"
-            href="/auth/login/index.html"
-            >Go to Login</a
+          <h2
+            class="flex justify-center font-headingMd font-medium text-lg text-shadow-lg py-8"
+            id="bid-heading"
           >
+            Place Your Bid
+          </h2>
+          <p class="font-body w-72 sm:w-96 mx-auto mb-2" id="bid-body">
+            Enter your bid amount below to participate in the auction. Make sure
+            your bid is higher than the current bid to have a chance to win!
+          </p>
+          <form class="flex flex-col" id="bid-form">
+            <div class="mx-auto mt-5">
+              <label for="bid-input"></label>
+              <input
+                type="number"
+                name="bid-input"
+                id="bid-input"
+                placeholder="Enter your bid"
+                class="flex font-body border-2 border-accent bg-white py-4 px-4 mb-4 w-72 sm:w-96"
+                required
+                min="1"
+              />
+            </div>
+            <div class="mb-10">
+              <button
+                type="submit"
+                class="bg-accent text-white font-accentFont py-2 px-6 text-md flex justify-center mx-auto mt-5 cursor-pointer hover:bg-blue-500 hover:scale-110 transition"
+              >
+                Place Bid
+              </button>
+            </div>
+            <span id="error"></span>
+          </form>
+          <div class="mb-10 mx-auto flex justify-center mt-10" id="login-link">
+            <a
+              class="font-accentFont font-medium bg-accent text-white py-2 px-4 text-sm text-shadow cursor-pointer hover:bg-blue-500 hover:scale-110 transition"
+              href="/auth/login/index.html"
+              >Go to Login</a
+            >
+          </div>
         </div>
-      </div>
-      <div id="bids-container" class="mb-10"></div>
+      </section>
+      <section>
+        <div id="bids-container" class="mb-10"></div>
+      </section>
     </main>
     <footer
       class="bg-accent font-accent text-white text-xs sm:text-sm p-16 mt-6"
