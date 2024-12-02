@@ -2,6 +2,8 @@ import { API_AUCTION_LISTINGS } from '../constants.js';
 import { deleteListing } from '../listings/delete.js';
 import { addBidsContainerWhenToken } from '../bids/bids.js';
 import { createCarousel } from './carousel.js';
+import { displayLoading, hideLoading } from '../../UI/loading.js';
+import { displayError } from '../../UI/error.js';
 
 export async function fetchListing() {
   const listingId = new URLSearchParams(window.location.search).get('id');
@@ -14,6 +16,7 @@ export async function fetchListing() {
   const apiUrl = `${API_AUCTION_LISTINGS}/${listingId}`;
 
   try {
+    displayLoading();
     const url = new URL(apiUrl);
     url.searchParams.append('_bids', 'true');
     url.searchParams.append('_seller', 'true');
@@ -33,6 +36,11 @@ export async function fetchListing() {
     return listing;
   } catch (error) {
     console.error(error);
+    displayError(
+      'An error occurred while loading the listing: ' + error.message
+    );
+  } finally {
+    hideLoading();
   }
 }
 
