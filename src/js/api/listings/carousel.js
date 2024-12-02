@@ -1,9 +1,9 @@
 export function createCarousel(listingArray) {
   const carouselWrapper = document.createElement('div');
-  carouselWrapper.className = 'relative w-full carousel';
+  carouselWrapper.className = 'relative overflow-hidden w-350 sm:w-550 mx-auto';
 
   const container = document.createElement('div');
-  container.className = 'carousel-slides';
+  container.className = 'flex transition-transform duration-500 ease-in-out';
   carouselWrapper.appendChild(container);
 
   if (!listingArray || listingArray.length === 0) {
@@ -14,10 +14,11 @@ export function createCarousel(listingArray) {
     img.classList.add(
       'w-350',
       'sm:w-550',
-      'h-full',
-      'object-cover',
+      'h-auto',
+      'object-contain',
       'rounded-lg',
-      'block'
+      'block',
+      'mx-auto'
     );
 
     container.appendChild(img);
@@ -25,13 +26,16 @@ export function createCarousel(listingArray) {
     return carouselWrapper;
   }
 
-  listingArray.forEach((listing, index) => {
+  listingArray.forEach((listing) => {
     const item = document.createElement('div');
-    item.className = 'carousel-item';
-    item.style.display = index === 0 ? 'block' : 'none';
+    item.className = 'flex-none w-350 sm:w-550';
     item.innerHTML = `
-        <img src="${listing.url}" alt="${listing.alt || 'Image'}" class="w-350 sm:w-550 h-full object-cover shadow-xl">
-      `;
+      <div class="flex justify-center items-center w-full h-full">
+        <img src="${listing.url}" 
+             alt="${listing.alt || 'Image'}" 
+             class="max-w-full max-h-full object-contain rounded-lg">
+      </div>
+    `;
     container.appendChild(item);
   });
 
@@ -39,49 +43,36 @@ export function createCarousel(listingArray) {
     const prevBtn = document.createElement('button');
     prevBtn.textContent = '❮';
     prevBtn.className =
-      'absolute top-1/2 left-2 transform -translate-y-1/2 bg-accent text-white px-4 py-2 text-md rounded-full prev';
+      'absolute top-1/2 left-2 transform -translate-y-1/2 bg-accent text-white px-4 py-2 text-md rounded-full';
     prevBtn.addEventListener('click', () => {
-      moveSlide(-1);
+      moveSlide(-1, container, listingArray.length);
     });
     carouselWrapper.appendChild(prevBtn);
 
     const nextBtn = document.createElement('button');
     nextBtn.textContent = '❯';
     nextBtn.className =
-      'absolute top-1/2 right-2 transform -translate-y-1/2 bg-accent text-white px-4 py-2 text-md rounded-full next';
+      'absolute top-1/2 right-2 transform -translate-y-1/2 bg-accent text-white px-4 py-2 text-md rounded-full';
     nextBtn.addEventListener('click', () => {
-      moveSlide(1);
+      moveSlide(1, container, listingArray.length);
     });
     carouselWrapper.appendChild(nextBtn);
   }
 
-  showSlides(slideIndex);
-
   return carouselWrapper;
 }
 
-let slideIndex = 1;
+let slideIndex = 0;
 
-function moveSlide(n) {
-  showSlides((slideIndex += n));
-}
+function moveSlide(direction, container, totalSlides) {
+  slideIndex += direction;
 
-function showSlides(n) {
-  const slides = document.getElementsByClassName('carousel-item');
-
-  if (slides.length === 0) {
-    return;
+  if (slideIndex < 0) {
+    slideIndex = totalSlides - 1;
+  } else if (slideIndex >= totalSlides) {
+    slideIndex = 0;
   }
 
-  if (n > slides.length) {
-    slideIndex = 1;
-  } else if (n < 1) {
-    slideIndex = slides.length;
-  }
-
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = 'none';
-  }
-
-  slides[slideIndex - 1].style.display = 'block';
+  const offset = -(slideIndex * 100);
+  container.style.transform = `translateX(${offset}%)`;
 }
