@@ -1,4 +1,6 @@
 import { API_AUCTION_LISTINGS } from '../constants.js';
+import { displayLoading, hideLoading } from '../../UI/loading.js';
+import { displayError } from '../../UI/error.js';
 
 const listingsContainer = document.getElementById('listings-container');
 let currentPage = 1;
@@ -10,6 +12,7 @@ export async function fetchListings(limit = 12, page = 1) {
   const apiUrl = API_AUCTION_LISTINGS;
 
   try {
+    displayLoading();
     const url = new URL(apiUrl);
     url.searchParams.append('_bids', 'true');
     url.searchParams.append('limit', limit);
@@ -38,9 +41,11 @@ export async function fetchListings(limit = 12, page = 1) {
       currentPage++;
     }
   } catch (error) {
-    console.error(error);
+    console.error('Failed to fetch listings:', error.message);
+    displayError('Unable to fetch auction listings. Please try again later.');
   } finally {
     isFetching = false;
+    hideLoading();
   }
 }
 

@@ -143,10 +143,20 @@
         >
           Recent Auction Items
         </h2>
+        <div id="loading" class="animate-pulse space-y-4 mb-6 hidden">
+          <div
+            class="grid md:grid-cols-2 xl:grid-cols-3 gap-x-8 mx-12 justify-center"
+          >
+            <div class="h-40 bg-gray-300 rounded"></div>
+            <div class="h-40 bg-gray-300 rounded"></div>
+            <div class="h-40 bg-gray-300 rounded"></div>
+          </div>
+        </div>
         <div
           id="listings-container"
           class="grid md:grid-cols-2 xl:grid-cols-3 gap-y-5 justify-center mx-auto"
         ></div>
+        <div id="error"></div>
       </section>
     </main>
     <footer
