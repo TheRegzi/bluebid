@@ -3,6 +3,31 @@ import { headers } from '../headers';
 import { displayError } from '../../UI/error';
 import { displayLoading, hideLoading } from '../../UI/loading';
 
+/**
+ * Creates an auction listing by sending a 'POST' request to the `API_AUCTION_LISTINGS` endpoint.
+ * This function collects title, description, media (up to three images), and a deadline from the `formData` object.
+ * It ensures that media URLs are formatted correctly and included only if provided.
+ *
+ * If the request is successful, it logs a success message and returns the newly created listing data.
+ * If the request fails, it logs an error and throws the error for further handling.
+ *
+ * Dependencies:
+ * - `displayLoading` and `hideLoading` are used for managing the loading state.
+ * - `headers` is a helper function that provides the necessary request headers.
+ *
+ * @async
+ * @param {FormData} formData - The form data containing the fields required to create a listing.
+ * @param {string} formData.title - The title of the auction listing.
+ * @param {string} formData.description - The description of the auction listing.
+ * @param {string} [formData.image1] - The URL for the first image (optional).
+ * @param {string} [formData.image2] - The URL for the second image (optional).
+ * @param {string} [formData.image3] - The URL for the third image (optional).
+ * @param {string} formData.deadline - The deadline for the auction in ISO 8601 format.
+ *
+ * @returns {Promise<object>} The newly created listing data from the API.
+ * @throws {Error} Throws an error if the API request fails.
+ */
+
 export async function createListing(formData) {
   const apiUrl = API_AUCTION_LISTINGS;
   const title = formData.get('title');
@@ -48,6 +73,16 @@ export async function createListing(formData) {
     hideLoading();
   }
 }
+
+/**
+ * Handles the creation of the listing by calling the `createListing` function. If the listing is created successfully, it redirects the user to the index page (`/index.html`) and  * returns `true`.
+ * If the creation fails, it displays an error message using `displayError` and returns `false`.
+ *
+ * @async
+ * @param {FormData} formData - The form data containing the fields required to create a listing.
+ * @returns {Promise<boolean>} Resolves to `true` if the listing is created successfully, or `false` if it fails.
+ * @throws {Error} Re-throws the error from `createListing` if an unexpected failure occurs.
+ */
 
 export async function handleCreateListing(formData) {
   try {
