@@ -17,6 +17,8 @@ export async function fetchListings(limit = 12, page = 1) {
     url.searchParams.append('_bids', 'true');
     url.searchParams.append('limit', limit);
     url.searchParams.append('page', page);
+    url.searchParams.append('sort', 'created');
+    url.searchParams.append('sortOrder', 'desc');
 
     const response = await fetch(url, {
       method: 'GET',
@@ -50,7 +52,6 @@ export async function fetchListings(limit = 12, page = 1) {
 }
 
 function renderListings(listings) {
-  listings.sort((a, b) => new Date(b.created) - new Date(a.created));
   listings.forEach((listing) => {
     const listingElement = document.createElement('div');
     listingElement.classList.add('listing-item');
@@ -68,7 +69,7 @@ function renderListings(listings) {
           <div class="flex flex-col justify-center mx-auto w-80 sm:w-96 h-96 mb-10 transition-all group-hover:brightness-90 group-hover:shadow-2xl group-hover:scale-105 rounded-xl">
             <img src="${imageUrl}" alt="${imageAlt}" class="w-full h-4/5 object-cover rounded-t-xl shadow-2xl">
             <div class="bg-secondary rounded-b-xl p-5 shadow-lg border-t border-accent2 flex-grow">
-              <h3 class="font-headingMd font-bold text-md text-shadow-lg">${listing.title}</h3>
+              <h3 class="font-headingMd font-bold text-md text-shadow-lg">${truncateText(listing.title, 30)}</h3>
               <p class="font-body">Current Bid: ${listing.bids?.length > 0 ? listing.bids[listing.bids.length - 1].amount : 0} credits</p>
             </div>
           </div>
@@ -92,3 +93,10 @@ function handleScroll() {
 }
 
 window.addEventListener('scroll', handleScroll);
+
+function truncateText(text, maxLength) {
+  if (text.length > maxLength) {
+    return text.substring(0, maxLength) + '...';
+  }
+  return text;
+}
