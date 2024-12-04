@@ -5,6 +5,22 @@ import { createCarousel } from './carousel.js';
 import { displayLoading, hideLoading } from '../../UI/loading.js';
 import { displayError } from '../../UI/error.js';
 
+/**
+ * Fetches a single auction listing by sending a 'GET' request to the `API_AUCTION_LISTINGS/${listingId}` endpoint.
+ * The `listingId` is retrieved from the query parameters in the current URL.
+ * If the `listingId` is missing, the function logs an error and exits early.
+ * If successful, it returns the listing data in JSON format.
+ * If the request fails, it calls `displayError` to show an error message.
+ *
+ * Dependencies:
+ * - `displayLoading` and `hideLoading` must be defined for loading state management.
+ * - `displayError` must be defined for error handling.
+ *
+ * @async
+ * @returns {Promise<object | undefined>} Resolves with the listing data if successful, or `undefined` if an error occurs.
+ * @throws {Error} Throws an error if the API request fails.
+ */
+
 export async function fetchListing() {
   const listingId = new URLSearchParams(window.location.search).get('id');
 
@@ -43,6 +59,28 @@ export async function fetchListing() {
     hideLoading();
   }
 }
+
+/**
+ * Displays a single auction listing fetched from the API.
+ * This function uses the result from `fetchListing` to dynamically generate and display
+ * the auction listing's details, including title, description, bids, and media.
+ * It also includes functionality for editing and deleting the listing if the user is the seller.
+ *
+ * Features:
+ * - Displays auction details such as title, description, current bid, and end date.
+ * - Shows a carousel for media if available.
+ * - Enables "Edit" and "Delete" actions if the current user matches the seller.
+ * - Dynamically appends elements to the `#listing-container`.
+ * - Calls `addBidsContainerWhenToken` to handle bidding interactions.
+ *
+ * Dependencies:
+ * - Requires `fetchListing` to retrieve the listing.
+ * - Uses helper functions like `createCarousel`, `deleteListing`, and `addBidsContainerWhenToken`.
+ *
+ * @async
+ * @returns {Promise<void>} Resolves when the listing is successfully displayed.
+ * @throws {Error} Logs errors and handles invalid data scenarios gracefully.
+ */
 
 export async function displaySingleAuction() {
   const listing = await fetchListing();
