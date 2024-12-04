@@ -1,3 +1,16 @@
+/**
+ * Displays image(s) for the single auction listing page.
+ * Creates an image carousel if there are multiple image URLs provided by the listing from the API, by creating a previous button and a next button.
+ * Each button have their own click event listener, which calls the function 'moveSlide' to slide between the images when clicked.
+ * If no images are available, a placeholder image is displayed.
+ *
+ * @param {Array<object>} listingArray - An array of image objects, each containing:
+ * @param {string} listingArray[].url - The URL of the image.
+ * @param {string} [listingArray[].alt] - The alt text for the image (optional).
+ *
+ * @returns {HTMLElement} The carousel element containing the images and navigation buttons.
+ */
+
 export function createCarousel(listingArray) {
   const carouselWrapper = document.createElement('div');
   carouselWrapper.className = 'relative overflow-hidden w-350 sm:w-550 mx-auto';
