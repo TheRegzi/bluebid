@@ -54,7 +54,6 @@ export async function fetchListings(limit = 12, page = 1) {
 function renderListings(listings) {
   listings.forEach((listing) => {
     const listingElement = document.createElement('div');
-    listingElement.classList.add('listing-item');
     const imageUrl =
       listing.media.length > 0
         ? listing.media[0].url
@@ -66,7 +65,7 @@ function renderListings(listings) {
 
     listingElement.innerHTML = `
         <a href="/listing/index.html?id=${listing.id}" class="block group">
-          <div class="flex flex-col justify-center mx-auto w-80 sm:w-96 h-96 mb-10 transition-all group-hover:brightness-90 group-hover:shadow-2xl group-hover:scale-105 rounded-xl">
+          <div class="justify-center mx-auto w-80 sm:w-96 h-96 mb-10 transition-all group-hover:shadow-2xl group-hover:brightness-110 group-hover:scale-105 rounded-xl">
             <img src="${imageUrl}" alt="${imageAlt}" class="w-full h-4/5 object-cover rounded-t-xl shadow-2xl">
             <div class="bg-secondary rounded-b-xl p-5 shadow-lg border-t border-accent2 flex-grow">
               <h3 class="font-headingMd font-bold text-md text-shadow-lg">${truncateText(listing.title, 30)}</h3>
