@@ -2,6 +2,17 @@ import { API_AUTH_LOGIN } from '../constants';
 import { displayError } from '../../UI/error';
 import { displayLoading, hideLoading } from '../../UI/loading';
 
+/**
+ * Function to login a user by their email and password, by sending a POST request to the login API.
+ * If the response is not okay, it throws a login error with a message from the API or a default message.
+ *
+ * @async
+ * @param {string} email The users registered email address.
+ * @param {string} password The users registered password.
+ * @returns {Promise<object>} A promise that resolves to the response data in JSON format.
+ * @throws {Error} Throws an error if the login fails or the response is not okay.
+ */
+
 export async function login({ email, password }) {
   const apiUrl = API_AUTH_LOGIN;
 
@@ -36,6 +47,17 @@ export async function login({ email, password }) {
     hideLoading();
   }
 }
+
+/**
+ * Handles user login by collecting the email and password from the form,
+ * then calls the 'login' function to authenticate the user via the API.
+ * On successful login, the user's token and name are stored in localStorage,
+ * and the user is redirected to the homepage. If unsuccessful, the function
+ * 'displayError' is called to display an error message for the user.
+ *
+ * @param {Event} event The form submission event to prevent default behavior.
+ * @returns {void} This function does not return any value.
+ */
 
 export async function onLogin(event) {
   event.preventDefault();
