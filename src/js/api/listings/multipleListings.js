@@ -1,6 +1,7 @@
 import { API_AUCTION_LISTINGS } from '../constants.js';
 import { displayLoading, hideLoading } from '../../UI/loading.js';
 import { displayError } from '../../UI/error.js';
+import { truncateText } from '../../UI/truncateText.js';
 
 const listingsContainer = document.getElementById('listings-container');
 let currentPage = 1;
@@ -135,10 +136,3 @@ function handleScroll() {
 }
 
 window.addEventListener('scroll', handleScroll);
-
-function truncateText(text, maxLength) {
-  if (text.length > maxLength) {
-    return text.substring(0, maxLength) + '...';
-  }
-  return text;
-}

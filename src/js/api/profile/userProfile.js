@@ -1,6 +1,7 @@
 import { headers } from '../headers';
 import { API_AUCTION_PROFILES } from '../constants';
 import { displayLoading, hideLoading } from '../../UI/loading';
+import { truncateText } from '../../UI/truncateText';
 
 export async function fetchUserProfile() {
   const username = localStorage.getItem('name');
@@ -170,6 +171,12 @@ export async function addUsersAuctionListings() {
   const profileData = await fetchUserProfile();
 
   const auctionContainer = document.getElementById('auction-listings');
+
+  if (!auctionContainer) {
+    console.error('Error: auctionContainer not found in the DOM.');
+    return;
+  }
+
   auctionContainer.innerHTML = '';
   auctionContainer.classList.add(
     'flex',
@@ -237,7 +244,7 @@ export async function addUsersAuctionListings() {
         <div class='flex flex-row'>
             <div class='flex flex-col w-56 justify-center mx-auto'>
                 <h3 class='font-headingMd font-medium text-md text-shadow text-left'>${listing.title}</h3>
-                <p class='font-body text-sm text-left'>Current Bid: ${listing.bids?.length > 0 ? result.bids[result.bids.length - 1].amount : 0} Credits</p>
+                <p class='font-body text-sm text-left'>${truncateText(listing.description, 30)}</p>
             </div>
             <div class='flex items-center'>
                 <img src="${listing?.media[0]?.url || 'https://img.freepik.com/free-vector/flat-design-no-photo-sign_23-2149272417.jpg?t=st=1732025243~exp=1732028843~hmac=90885c767238b4085c78b33d2e8a8113608c31d3256c30818a26717515635287&w=826'}" alt="Auction Image" class='w-20 h-16 object-cover rounded-lg'>
