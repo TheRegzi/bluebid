@@ -1,6 +1,18 @@
 import { API_AUCTION_LISTINGS } from '../constants';
 import { displayLoading, hideLoading } from '../../UI/loading';
 
+/**
+ * Tries to search for listings by sending a GET request to the API_AUCTION_LISTINGS/search endpoint.
+ * Appends the query string and additional parameters for fetching bid details.
+ * If successful, it returns the result data in JSON format.
+ * If unsuccessful, it throws an error with a error message.
+ *
+ * @async
+ * @param {string} query - The query search typed inside the input field.
+ * @returns {Promise<Object|null>} - A promise that resolves to the search data in JSON format, or `null` if the update fails or the ID is not found.
+ * @throws {Error} - Throws an error if the search request fails or the response is not OK.
+ */
+
 export async function search(query) {
   const apiUrl = `${API_AUCTION_LISTINGS}/search?q=${encodeURIComponent(query)}`;
 
@@ -33,6 +45,19 @@ export async function search(query) {
     hideLoading();
   }
 }
+
+/**
+ * Displays the search results retrieved from the search function, by creating and appending HTML elements
+ * to dynamically generate the results.
+ *
+ * - If no results are found, it displays a message indicating that no listings match the search query.
+ * - Results include links to the respective listing pages.
+ *
+ * @param {HTMLElement} container - The DOM element where search results will be rendered.
+ * @param {Array<Object>} results - An array of search results returned by the `search` function.
+ * @param {string} query - The query search typed inside the input field.
+ * @returns {Promise<void>} - Resolves when the profile details have been successfully rendered in the DOM.
+ */
 
 export async function renderSearchResults(container, results, query) {
   container.innerHTML = '';
@@ -81,6 +106,15 @@ export async function renderSearchResults(container, results, query) {
   });
 }
 
+/**
+ * Creates a debounced version of a function, which delays the calling of the provided function
+ * until after the delay has elapsed since the last time the debounced function was called.
+ *
+ * @param {Function} func - The function to debounce.
+ * @param {number} delay - The number of milliseconds to delay execution.
+ * @returns {Function} - A debounced version of the provided function
+ */
+
 export function debounce(func, delay) {
   let timeout;
   return (...args) => {
@@ -88,6 +122,19 @@ export function debounce(func, delay) {
     timeout = setTimeout(() => func(...args), delay);
   };
 }
+/**
+ * Tries to retrieve the results from the search request, and then render the search results to
+ * display the results to the user.
+ * The search request is debounced with a delay of 300 milliseconds to prevent excessive API calls.
+ *
+ * - If the input field is empty, it clears the results container.
+ * - If the search is successful, it renders the results in the specified results container using `renderSearchResults`.
+ * - If the search fails, it logs the error to the console and displays an error message in the results container.
+ *
+ * @param {HTMLInputElement} inputElement - The input element where users type their search query.
+ * @param {HTMLElement} resultsContainer - The container where the search results will be displayed.
+ * @returns {void} - This function does not return a value.
+ */
 
 export function attachSearchHandler(inputElement, resultsContainer) {
   const handleSearchInput = debounce(async () => {
