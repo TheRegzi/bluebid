@@ -3,6 +3,16 @@ import { API_AUCTION_PROFILES } from '../constants';
 import { displayLoading, hideLoading } from '../../UI/loading';
 import { truncateText } from '../../UI/truncateText';
 
+/**
+ * Fetches user profile by sending a GET request to the API_AUCTION_PROFILES/username endpoint.
+ * The username is retrieved from `localStorage` under the key `name`.
+ * If it's successful, it returns the profile data in JSON format.
+ * If unsuccessful, it throws an error with a relevant message.
+ *
+ * @async
+ * @returns {Promise<Object|null>} - A promise that resolves to the listing data in JSON format, or `null` if the update fails or the ID is not found.
+ */
+
 export async function fetchUserProfile() {
   const username = localStorage.getItem('name');
   const apiUrl = `${API_AUCTION_PROFILES}/${username}`;
@@ -34,6 +44,22 @@ export async function fetchUserProfile() {
     hideLoading();
   }
 }
+
+/**
+ * Displays the profile details of the logged-in user by creating and appending HTML elements
+ * to dynamically generate the profile page. The data is fetched using the `fetchUserProfile` function.
+ *
+ * This function displays these profile details:
+ * - **Banner Image**: Displayed at the top of the profile.
+ * - **Avatar Image**: Displayed as the user's profile picture.
+ * - **Credits**: Shows the user's total credits alongside a money bag icon.
+ * - **Username**: Displayed as a heading.
+ * - **Bio**: The user's biography or personal information.
+ * - **Edit Button**: A button that redirects to the profile editing page.
+ *
+ * @async
+ * @returns {Promise<void>} - Resolves when the profile details have been successfully rendered in the DOM.
+ */
 
 export async function displayLoggedInUserProfile() {
   const profileData = await fetchUserProfile();
@@ -167,6 +193,19 @@ export async function displayLoggedInUserProfile() {
   container.appendChild(profileElement);
 }
 
+/**
+ * It takes the profile data retrieved from the 'fetchUserProfile' function to display all the auction
+ * listings that the logged in user has created. For each listing, it displays the title, description and the first
+ * image of the listing. The title and description has the 'truncateText' function added to them, to shorten the
+ * characters. If there is no profile data, it displays an error message. If there are no listings created, it says that
+ * no listings are made yet.
+ * When clicking on one of the listings, it takes the user to the corresponding listing.
+ * It sorts the listings, so that the newest listing is always at the top.
+ *
+ * @async
+ * @returns {Promise<void>} - Resolves when the listings have been successfully rendered in the DOM.
+ */
+
 export async function addUsersAuctionListings() {
   const profileData = await fetchUserProfile();
 
@@ -243,7 +282,7 @@ export async function addUsersAuctionListings() {
         <a href='/listing/index.html?id=${listing.id}'>
         <div class='flex flex-row'>
             <div class='flex flex-col w-56 justify-center mx-auto'>
-                <h3 class='font-headingMd font-medium text-md text-shadow text-left'>${listing.title}</h3>
+                <h3 class='font-headingMd font-medium text-md text-shadow text-left'>${truncateText(listing.title, 25)}</h3>
                 <p class='font-body text-sm text-left'>${truncateText(listing.description, 30)}</p>
             </div>
             <div class='flex items-center'>

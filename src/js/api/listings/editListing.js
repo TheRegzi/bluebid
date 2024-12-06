@@ -74,6 +74,7 @@ populateInputs();
  * If successful it returns the updated data in JSON format and redirects to the updated listing's page.
  * If unsuccessful, it displays an error with the 'displayError' function.
  *
+ * @async
  * @param {string} listingId - The unique identifier of the listing to be deleted.
  * @param {Object} data - The data object containing updated listing details.
  * @param {string} data.title - The updated title of the listing.
