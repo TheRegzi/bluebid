@@ -163,7 +163,7 @@ export async function displayLoggedInUserProfile() {
 
   const content = document.createElement('p');
   content.textContent = profileData.bio;
-  content.classList.add('text-sm', 'font-body', 'my-4');
+  content.classList.add('text-sm', 'font-body', 'm-4');
 
   const editButton = document.createElement('button');
   editButton.textContent = 'Edit Profile';
