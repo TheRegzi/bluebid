@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BlueBid</title>
+    <title>Auction on BlueBid</title>
+    <meta
+      name="description"
+      content="Own a piece of history! Bid on this item and make it yours. Ensure your bid is higher than the current bid before the auction ends!"
+    />
     <link rel="icon" href="/favicon_bb/favicon.ico" />
     <script
       src="https://kit.fontawesome.com/878e5c0278.js"
@@ -14,20 +18,25 @@
   <body class="flex flex-col min-h-screen">
     <header
       class="flex flex-row text-black justify-between items-center font-accent border-b border-accent2 shadow-lg"
+      aria-label="Primary Navigation"
     >
       <div>
-        <a href="/index.html"
+        <a href="/index.html" aria-label="BlueBid Home"
           ><img
             src="/assets/bluebid-logo.png"
-            alt="BlueBidLogo"
+            alt="BlueBid Logo"
             class="h-28 p-4 pl-8"
         /></a>
       </div>
       <div class="relative">
-        <nav class="bg-white text-black px-4 py-2 flex justify-between mr-4">
+        <nav
+          class="bg-white text-black px-4 py-2 flex justify-between mr-4"
+          aria-label="Main Navigation"
+        >
           <button
             id="menu-button"
             class="block lg:hidden focus:outline-none text-xl pr-5"
+            aria-label="Open Mobile Menu"
           >
             <i class="fa-solid fa-bars"></i>
           </button>
@@ -68,6 +77,7 @@
         <div
           id="mobile-menu"
           class="hidden lg:hidden fixed inset-x-0 top-22 bg-white text-black px-4 py-2 mt-6 w-full z-50 shadow"
+          aria-label="Mobile Menu"
         >
           <div
             class="space-y-5 lg:hidden flex flex-col font-accentFont font-medium text-md p-5 mx-0 mb-5"
@@ -105,20 +115,32 @@
         </div>
       </div>
     </header>
-    <main class="flex-1 flex flex-col justify-center mx-auto">
+    <main
+      class="flex-1 flex flex-col justify-center mx-auto"
+      aria-label="Auction Page"
+    >
       <section>
-        <div id="loading" class="animate-pulse space-y-4 mb-6 hidden">
+        <div
+          id="loading"
+          class="animate-pulse space-y-4 mb-6 hidden"
+          aria-label="Loading indicator"
+        >
           <div class="grid grid-cols-1 mt-3 mx-auto justify-center">
             <div class="h-80 bg-gray-300 rounded"></div>
           </div>
         </div>
-        <div id="listing-container" class="mt-8"></div>
+        <div
+          id="listing-container"
+          class="mt-8"
+          aria-label="Auction listing details"
+        ></div>
         <span id="error"></span>
       </section>
       <section>
         <div
           id="bidding-container"
           class="flex flex-col w-350 sm:w-550 bg-primary shadow-xl mb-10"
+          aria-label="Bidding section"
         >
           <h2
             class="flex justify-center font-headingMd font-medium text-lg text-shadow-lg py-8"
@@ -126,11 +148,19 @@
           >
             Place Your Bid
           </h2>
-          <p class="font-body w-72 sm:w-96 mx-auto" id="bid-body">
+          <p
+            class="font-body w-72 sm:w-96 mx-auto"
+            id="bid-body"
+            aria-label="Bid instructions"
+          >
             Enter your bid amount below to participate in the auction. Make sure
             your bid is higher than the current bid to have a chance to win!
           </p>
-          <form class="flex flex-col" id="bid-form">
+          <form
+            class="flex flex-col"
+            id="bid-form"
+            aria-label="Bid submission form"
+          >
             <div class="mx-auto mt-5">
               <label for="bid-input"></label>
               <input
@@ -141,12 +171,14 @@
                 class="flex font-body border-2 border-accent bg-white py-4 px-4 mb-4 w-72 sm:w-96"
                 required
                 min="1"
+                aria-label="Bid input field"
               />
             </div>
             <div class="mb-10">
               <button
                 type="submit"
                 class="bg-accent text-white font-accentFont py-2 px-6 text-md flex justify-center mx-auto mt-5 cursor-pointer hover:bg-blue-500 hover:scale-110 transition"
+                aria-label="Submit your bid"
               >
                 Place Bid
               </button>
@@ -162,7 +194,11 @@
         </div>
       </section>
       <section>
-        <div id="bids-container" class="mb-10"></div>
+        <div
+          id="bids-container"
+          class="mb-10"
+          aria-label="Bid history container"
+        ></div>
       </section>
     </main>
     <footer
