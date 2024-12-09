@@ -136,7 +136,7 @@ export async function updateListing(listingId, { title, description, media }) {
 
 export function initializeSubmitButton() {
   document
-    .querySelector('form[name="create-form"]')
+    .querySelector('form[name="edit-form"]')
     .addEventListener('submit', async (event) => {
       event.preventDefault();
 
