@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BlueBid</title>
+    <title>BlueBid | Search</title>
+    <meta
+      name="description"
+      content="Search through thousands of Auction Listings."
+    />
     <link rel="icon" href="/favicon_bb/favicon.ico" />
     <script
       src="https://kit.fontawesome.com/878e5c0278.js"
@@ -14,9 +18,10 @@
   <body class="flex flex-col min-h-screen">
     <header
       class="flex flex-row text-black justify-between items-center font-accent border-b border-accent2 shadow-lg"
+      aria-label="Primary Navigation"
     >
       <div>
-        <a href="/index.html"
+        <a href="/index.html" aria-label="BlueBid Home"
           ><img
             src="/assets/bluebid-logo.png"
             alt="BlueBidLogo"
@@ -24,10 +29,14 @@
         /></a>
       </div>
       <div class="relative">
-        <nav class="bg-white text-black px-4 py-2 flex justify-between mr-4">
+        <nav
+          class="bg-white text-black px-4 py-2 flex justify-between mr-4"
+          aria-label="Main Navigation"
+        >
           <button
             id="menu-button"
             class="block lg:hidden focus:outline-none text-xl pr-5"
+            aria-label="Open Mobile Menu"
           >
             <i class="fa-solid fa-bars"></i>
           </button>
@@ -70,6 +79,7 @@
         <div
           id="mobile-menu"
           class="hidden lg:hidden fixed inset-x-0 top-22 bg-white text-black px-4 py-2 mt-6 w-full z-50 shadow"
+          aria-label="Mobile Menu"
         >
           <div
             class="space-y-5 lg:hidden flex flex-col font-accentFont font-medium text-md p-5 mx-0 mb-5"
@@ -109,19 +119,22 @@
         </div>
       </div>
     </header>
-    <main class="flex-1 flex flex-col mx-auto w-350 sm:w-550">
-      <section>
+    <main
+      class="flex-1 flex flex-col mx-auto w-350 sm:w-550"
+      aria-label="Search Page"
+    >
+      <section aria-labelledby="search-heading">
         <h1
           class="flex font-headingMd font-medium text-lg justify-center mt-10 text-shadow mb-5"
         >
           Search
         </h1>
-        <p class="font-body text-sm">
+        <p class="font-body text-sm" aria-label="Search description">
           Discover thousands of auctions – the perfect item is just a search
           away.
         </p>
 
-        <form class="mt-5 flex flex-col">
+        <form class="mt-5 flex flex-col" aria-label="Search Form">
           <label class="font-headingMd font-medium text-md" for="search"
             >Search here</label
           >
@@ -131,15 +144,20 @@
             id="search-input"
             placeholder="Search here.."
             class="border-2 border-accent rounded-lg p-2 mt-2"
+            aria-label="Search input field"
           />
         </form>
 
-        <div id="loading" class="animate-pulse space-y-4 mb-6 hidden">
+        <div
+          id="loading"
+          class="animate-pulse space-y-4 mb-6 hidden"
+          aria-label="Loading indicator"
+        >
           <div class="grid grid-cols-1 mt-3 mx-auto justify-center">
             <div class="h-28 bg-gray-300 rounded"></div>
           </div>
         </div>
-        <div id="search-results"></div>
+        <div id="search-results" aria-label="Search Results"></div>
       </section>
     </main>
     <footer
