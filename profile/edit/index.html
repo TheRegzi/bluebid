@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BlueBid</title>
+    <title>BlueBid | Edit Profile</title>
+    <meta name="description" content="Edit your profile information." />
     <link rel="icon" href="/favicon_bb/favicon.ico" />
     <script
       src="https://kit.fontawesome.com/878e5c0278.js"
@@ -14,20 +15,25 @@
   <body class="flex flex-col min-h-screen">
     <header
       class="flex flex-row text-black justify-between items-center font-accent border-b border-accent2 shadow-lg"
+      aria-label="Primary Navigation"
     >
       <div>
-        <a href="/index.html"
+        <a href="/index.html" aria-label="BlueBid Home"
           ><img
             src="/assets/bluebid-logo.png"
-            alt="BlueBidLogo"
+            alt="BlueBid Logo"
             class="h-28 p-4 pl-8"
         /></a>
       </div>
       <div class="relative">
-        <nav class="bg-white text-black px-4 py-2 flex justify-between mr-4">
+        <nav
+          class="bg-white text-black px-4 py-2 flex justify-between mr-4"
+          aria-label="Main Navigation"
+        >
           <button
             id="menu-button"
             class="block lg:hidden focus:outline-none text-xl pr-5"
+            aria-label="Open Mobile Menu"
           >
             <i class="fa-solid fa-bars"></i>
           </button>
@@ -72,6 +78,7 @@
         <div
           id="mobile-menu"
           class="hidden lg:hidden fixed inset-x-0 top-22 bg-white text-black px-4 py-2 mt-6 w-full z-50 shadow"
+          aria-label="Mobile Menu"
         >
           <div
             class="space-y-5 lg:hidden flex flex-col font-accentFont font-medium text-md p-5 mx-0 mb-5"
@@ -109,7 +116,7 @@
         </div>
       </div>
     </header>
-    <main class="flex-1">
+    <main class="flex-1" aria-label="Edit Profile Page">
       <section class="flex flex-col mb-10">
         <h1
           class="justify-center mx-auto text-lg font-headingLg font-semibold text-shadow my-8"
@@ -119,11 +126,16 @@
         <div
           id="loading"
           class="hidden animate-pulse fixed inset-0 items-center justify-center bg-gray-100 bg-opacity-50"
+          aria-label="Loading indicator"
         >
           <div class="grid grid-cols-1 mt-3 mx-10 justify-center"></div>
         </div>
         <div class="flex justify-center mx-auto">
-          <form name="update-profile" class="w-350 sm:w-550">
+          <form
+            name="update-profile"
+            class="w-350 sm:w-550"
+            aria-label="Edit profile form"
+          >
             <div class="w-full flex flex-col">
               <label for="update-bio" class="font-headingMd text-md mb-2"
                 >Edit Bio</label
@@ -164,6 +176,7 @@
             <button
               type="submit"
               class="flex justify-center mx-auto bg-accent font-accentFont text-md text-white py-2 px-4 mt-8 transition hover:bg-blue-500 hover:scale-110"
+              aria-label="Submit profile updates"
             >
               Update Profile
             </button>
