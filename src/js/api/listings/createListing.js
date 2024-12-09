@@ -75,31 +75,17 @@ export async function createListing(formData) {
 }
 
 /**
- * Handles the creation of the listing by calling the `createListing` function. If the listing is created successfully, it redirects the user to the index page (`/index.html`) and  * returns `true`.
- * If the creation fails, it displays an error message using `displayError` and returns `false`.
+ * Initializes the creation of the listing by calling the `createListing` function. If the listing is created successfully, it redirects
+ * the user to the index page (`/index.html`) and logs a success message.
+ * If the creation fails, it displays an error message using `displayError`.
  *
  * @async
  * @param {FormData} formData - The form data containing the fields required to create a listing.
- * @returns {Promise<boolean>} Resolves to `true` if the listing is created successfully, or `false` if it fails.
- * @throws {Error} Re-throws the error from `createListing` if an unexpected failure occurs.
+ * @returns {Promise<boolean>} Resolves when the form submission is handled.
+ * @throws {Error} Logs unexpected errors to the console and displays a user-friendly error message.
  */
 
-export async function handleCreateListing(formData) {
-  try {
-    const result = await createListing(formData);
-    console.log('Listing created successfully.');
-    window.location.href = '/index.html';
-    return true;
-  } catch (error) {
-    console.error('Failed to create listing:', error);
-    displayError(
-      'Failed to create listing. Make sure to set a valid deadline date.'
-    );
-    return false;
-  }
-}
-
-export function initializeCreateListing() {
+export async function initializeCreateListing() {
   const form = document.getElementById('create-form');
 
   if (!form) {
@@ -113,13 +99,17 @@ export function initializeCreateListing() {
     try {
       const formData = new FormData(form);
 
-      const isSuccess = await handleCreateListing(formData);
+      const isSuccess = await createListing(formData);
 
       if (isSuccess) {
         console.log('Listing creation handled successfully');
+        window.location.href = '/index.html';
       }
     } catch (error) {
       console.error('Unexpected error during creation:', error);
+      displayError(
+        'Failed to create listing. Make sure to set a valid deadline date.'
+      );
     }
   });
 }
