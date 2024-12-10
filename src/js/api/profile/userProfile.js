@@ -116,7 +116,7 @@ export async function displayLoggedInUserProfile() {
       'absolute',
       'left-1/2',
       '-translate-x-1/2',
-      '-translate-y-14',
+      '-translate-y-20',
       'shadow-lg'
     );
 
