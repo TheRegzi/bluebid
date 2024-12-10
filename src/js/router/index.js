@@ -31,11 +31,11 @@ export default async function router(pathname = window.location.pathname) {
         console.log('Loaded editListing.js');
         break;
       case '/profile/index.html':
-        await import('../router/views/userProfile.js');
+        await import('./views/userProfile.js');
         console.log('Loaded userProfile.js');
         break;
       case '/profile/edit/index.html':
-        await import('../router/views/updateProfile.js');
+        await import('./views/updateProfile.js');
         console.log('Loaded updateProfile.js');
         break;
     }
