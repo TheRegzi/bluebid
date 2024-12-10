@@ -10,7 +10,7 @@
     "format": "npx prettier --config prettier.config.mjs --write .",
     "lint": "eslint src/**/*.js",
     "lint-fix": "eslint src/**/*.js --cache --fix",
-    "prepare": "husky install"
+    "test": "echo \"No tests specified\""
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
