@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register | BlueBid</title>
+    <meta
+      name="description"
+      content="Register to BlueBid and immerse yourself in the Auction Universe. Start bidding today!"
+    />
+    <link rel="icon" href="/favicon_bb/favicon.ico" />
+    <script
+      src="https://kit.fontawesome.com/878e5c0278.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="/src/app.js"></script>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <header
+      class="flex flex-row text-black justify-between items-center font-accent border-b border-accent2 shadow-lg"
+      aria-label="Primary Navigation"
+    >
+      <div>
+        <a href="/index.html" aria-label="BlueBid Home"
+          ><img
+            src="/assets/bluebid-logo.png"
+            alt="BlueBidLogo"
+            class="h-28 p-4 pl-8"
+        /></a>
+      </div>
+      <div class="relative">
+        <nav
+          class="bg-white text-black px-4 py-2 flex justify-between mr-4"
+          aria-label="Main Navigation"
+        >
+          <button
+            id="menu-button"
+            class="block lg:hidden focus:outline-none text-xl pr-5"
+            aria-label="Open Mobile Menu"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div
+            class="hidden lg:flex space-x-14 font-accentFont font-medium text-md"
+          >
+            <a href="/index.html" class="hover:text-blue-500 mt-2 mx-4">Home</a>
+            <a href="/search/index.html" class="hover:text-blue-500 mt-2 mx-4"
+              >Search</a
+            >
+            <a
+              href="/auth/login/index.html"
+              class="hover:text-blue-500 mt-2 mx-4 logIn"
+              >Log In</a
+            >
+            <a
+              href="/auth/register/index.html"
+              class="hover:text-blue-500 mt-2 mx-4 register border-b-4 border-black hover:border-blue-500"
+              >Register</a
+            >
+            <a
+              href="/listing/create/index.html"
+              class="hover:text-blue-500 mt-2 mx-4 transition createAuction"
+              >Create Auction Listing</a
+            >
+            <a
+              href="/profile/index.html"
+              class="hover:text-blue-500 mt-2 mx-4 transition myProfile"
+              >My Profile</a
+            >
+            <button
+              class="w-28 text-center text-white rounded-xl bg-accent font-accentFont py-2 shadow-xl font-medium text-md transition hover:bg-blue-500 hover:scale-110 logOut"
+            >
+              Log Out
+            </button>
+          </div>
+        </nav>
+        <div
+          id="mobile-menu"
+          class="hidden lg:hidden fixed inset-x-0 top-22 bg-white text-black px-4 py-2 mt-6 w-full z-50 shadow"
+          aria-label="Mobile Menu"
+        >
+          <div
+            class="space-y-5 lg:hidden flex flex-col font-accentFont font-medium text-md p-5 mx-0 mb-5"
+          >
+            <a href="/index.html" class="hover:text-blue-500 mt-2">Home</a>
+            <a href="/search/index.html" class="hover:text-blue-500 mt-2"
+              >Search</a
+            >
+            <a
+              href="/auth/login/index.html"
+              class="hover:text-blue-500 mt-2 logIn"
+              >Log In</a
+            >
+            <a
+              href="/auth/register/index.html"
+              class="hover:text-blue-500 mt-2 register text-blue-500"
+              >Register</a
+            >
+            <a
+              href="/listing/create/index.html"
+              class="hover:text-blue-500 mt-2 transition createAuction"
+              >Create Auction Listing</a
+            >
+            <a
+              href="/profile/index.html"
+              class="hover:text-blue-500 mt-2 transition myProfile"
+              >My Profile</a
+            >
+            <button
+              class="w-28 text-center text-white rounded-xl bg-accent font-accentFont py-2 shadow-xl font-medium text-md transition hover:bg-blue-500 hover:scale-110 logOut"
+            >
+              Log Out
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="flex-1 flex flex-col bg-secondary" aria-label="Register Page">
+      <section>
+        <h1
+          class="flex font-headingMd font-medium text-lg justify-center mt-10 text-shadow"
+        >
+          Register to BlueBid
+        </h1>
+        <div
+          id="loading"
+          class="hidden animate-pulse fixed inset-0 items-center justify-center bg-gray-100 bg-opacity-50"
+          aria-label="Loading indicator"
+        >
+          <div class="grid grid-cols-1 mt-3 mx-10 justify-center"></div>
+        </div>
+        <div class="flex flex-col items-center justify-center mb-10">
+          <form
+            name="register"
+            id="register"
+            class="flex flex-col items-center w-350 sm:w-550 p-2"
+            aria-label="Registration form"
+          >
+            <div class="w-full flex flex-col">
+              <label for="name" class="font-heading text-lg mt-3"
+                >Username <span class="text-customRed">*</span></label
+              >
+              <input
+                id="name"
+                type="name"
+                name="name"
+                autocomplete="username"
+                class="font-bod border-2 border-accent rounded-xl bg-white p-4"
+                placeholder="Enter Username"
+                required
+                maxlength="20"
+                pattern="^[\w]+$"
+                title="Please enter a username using only letters and numbers"
+                aria-label="Username input field"
+              />
+            </div>
+            <div class="w-full flex flex-col">
+              <label for="email" class="font-heading text-lg mt-4"
+                >E-mail <span class="text-customRed">*</span></label
+              >
+              <input
+                id="email"
+                type="email"
+                name="email"
+                autocomplete="email"
+                class="font-body border-2 border-accent rounded-xl bg-white p-4"
+                placeholder="Enter E-mail"
+                required
+                pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
+                title="Please enter a valid stud.noroff.no address"
+                aria-label="Email input field"
+              />
+            </div>
+            <div class="w-full flex flex-col">
+              <label for="password" class="font-heading text-lg mt-4"
+                >Password <span class="text-customRed">*</span></label
+              >
+              <input
+                type="password"
+                name="password"
+                id="password"
+                autocomplete="current-password"
+                class="font-body border-2 border-accent rounded-xl bg-white p-4"
+                placeholder="Enter Password"
+                required
+                minlength="8"
+                aria-label="Password input field"
+              />
+            </div>
+            <div class="w-full flex flex-col">
+              <label for="bio" class="font-heading text-lg mt-4"
+                >Bio (Optional)</label
+              >
+              <textarea
+                name="bio"
+                id="bio"
+                class="font-body border-2 border-accent rounded-xl bg-white p-4"
+                placeholder="Enter Bio"
+                aria-label="Bio input field (optional)"
+              ></textarea>
+            </div>
+            <div class="w-full flex flex-col">
+              <label for="avatarUrl" class="font-heading text-lg mt-4"
+                >Profile Image URL (Optional)</label
+              >
+              <input
+                type="url"
+                name="avatarUrl"
+                id="avatarUrl"
+                class="font-body border-2 border-accent rounded-xl bg-white p-4"
+                placeholder="Enter Profile Image URL"
+                aria-label="Profile image URL input field (optional)"
+              />
+            </div>
+            <div class="w-full flex flex-col">
+              <label for="bannerUrl" class="font-heading text-lg mt-4"
+                >Banner Image URL (Optional)</label
+              >
+              <input
+                type="url"
+                name="bannerUrl"
+                id="bannerUrl"
+                class="font-body border-2 border-accent rounded-xl bg-white p-4"
+                placeholder="Enter Banner Image URL"
+                aria-label="Banner image URL input field (optional)"
+              />
+            </div>
+            <button
+              class="bg-accent text-white mt-10 px-10 py-2 font-accentFont text-md sm:text-md"
+              aria-label="Submit registration form"
+            >
+              Register
+            </button>
+            <span id="error"></span>
+            <p class="font-body text-sm mt-8 font-medium">
+              Already a user?
+              <a
+                class="text-accent font-semibold font-body"
+                href="/auth/login/index.html"
+                aria-label="Go to login page link"
+                >Login here!</a
+              >
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer class="bg-accent font-accent text-white text-xs sm:text-sm p-16">
+      <h3 class="flex justify-center">© BlueBid corp.</h3>
+    </footer>
+  </body>
+</html>

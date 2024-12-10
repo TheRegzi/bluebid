@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BlueBid | Edit Profile</title>
+    <meta name="description" content="Edit your profile information." />
+    <link rel="icon" href="/favicon_bb/favicon.ico" />
+    <script
+      src="https://kit.fontawesome.com/878e5c0278.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="/src/app.js"></script>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <header
+      class="flex flex-row text-black justify-between items-center font-accent border-b border-accent2 shadow-lg"
+      aria-label="Primary Navigation"
+    >
+      <div>
+        <a href="/index.html" aria-label="BlueBid Home"
+          ><img
+            src="/assets/bluebid-logo.png"
+            alt="BlueBid Logo"
+            class="h-28 p-4 pl-8"
+        /></a>
+      </div>
+      <div class="relative">
+        <nav
+          class="bg-white text-black px-4 py-2 flex justify-between mr-4"
+          aria-label="Main Navigation"
+        >
+          <button
+            id="menu-button"
+            class="block lg:hidden focus:outline-none text-xl pr-5"
+            aria-label="Open Mobile Menu"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div
+            class="hidden lg:flex space-x-14 font-accentFont font-medium text-md"
+          >
+            <a
+              href="/index.html"
+              class="hover:text-blue-500 mt-2 mx-4 justify-center hover:border-blue-500"
+              >Home</a
+            >
+            <a href="/search/index.html" class="hover:text-blue-500 mt-2 mx-4"
+              >Search</a
+            >
+            <a
+              href="/auth/login/index.html"
+              class="hover:text-blue-500 mt-2 mx-4 logIn"
+              >Log In</a
+            >
+            <a
+              href="/auth/register/index.html"
+              class="hover:text-blue-500 mt-2 mx-4 register"
+              >Register</a
+            >
+            <a
+              href="/listing/create/index.html"
+              class="hover:text-blue-500 mt-2 mx-4 transition createAuction"
+              >Create Auction Listing</a
+            >
+            <a
+              href="/profile/index.html"
+              class="hover:text-blue-500 mt-2 mx-4 transition myProfile"
+              >My Profile</a
+            >
+            <button
+              class="w-28 text-center text-white rounded-xl bg-accent font-accentFont py-2 shadow-xl font-medium text-md transition hover:bg-blue-500 hover:scale-110 logOut"
+            >
+              Log Out
+            </button>
+          </div>
+        </nav>
+        <div
+          id="mobile-menu"
+          class="hidden lg:hidden fixed inset-x-0 top-22 bg-white text-black px-4 py-2 mt-6 w-full z-50 shadow"
+          aria-label="Mobile Menu"
+        >
+          <div
+            class="space-y-5 lg:hidden flex flex-col font-accentFont font-medium text-md p-5 mx-0 mb-5"
+          >
+            <a href="/index.html" class="hover:text-blue-500 mt-2">Home</a>
+            <a href="/search/index.html" class="hover:text-blue-500 mt-2"
+              >Search</a
+            >
+            <a
+              href="/auth/login/index.html"
+              class="hover:text-blue-500 mt-2 logIn"
+              >Log In</a
+            >
+            <a
+              href="/auth/register/index.html"
+              class="hover:text-blue-500 mt-2 register"
+              >Register</a
+            >
+            <a
+              href="/listing/create/index.html"
+              class="hover:text-blue-500 mt-2 transition createAuction"
+              >Create Auction Listing</a
+            >
+            <a
+              href="/profile/index.html"
+              class="hover:text-blue-500 mt-2 transition myProfile"
+              >My Profile</a
+            >
+            <button
+              class="w-28 text-center text-white rounded-xl bg-accent font-accentFont py-2 shadow-xl font-medium text-md transition hover:bg-blue-500 hover:scale-110 logOut"
+            >
+              Log Out
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="flex-1" aria-label="Edit Profile Page">
+      <section class="flex flex-col mb-10">
+        <h1
+          class="justify-center mx-auto text-lg font-headingLg font-semibold text-shadow my-8"
+        >
+          Edit Profile
+        </h1>
+        <div
+          id="loading"
+          class="hidden animate-pulse fixed inset-0 items-center justify-center bg-gray-100 bg-opacity-50"
+          aria-label="Loading indicator"
+        >
+          <div class="grid grid-cols-1 mt-3 mx-10 justify-center"></div>
+        </div>
+        <div class="flex justify-center mx-auto">
+          <form
+            name="update-profile"
+            class="w-350 sm:w-550"
+            aria-label="Edit profile form"
+          >
+            <div class="w-full flex flex-col">
+              <label for="update-bio" class="font-headingMd text-md mb-2"
+                >Edit Bio</label
+              >
+              <textarea
+                name="bio"
+                id="update-bio"
+                class="font-post border-2 border-accent rounded-xl p-4"
+                placeholder="Enter Bio"
+              ></textarea>
+            </div>
+            <div class="w-full flex flex-col">
+              <label for="update-image" class="font-headingMd text-md mt-5 mb-2"
+                >Edit Profile Image Url</label
+              >
+              <input
+                type="url"
+                name="update-image"
+                id="update-image"
+                class="font-post border-2 border-accent rounded-xl p-3"
+                placeholder="Enter Profile Image URL"
+              />
+            </div>
+            <div class="w-full flex flex-col">
+              <label
+                for="update-banner"
+                class="font-headingMd text-md mt-5 mb-2"
+                >Edit Banner Image Url</label
+              >
+              <input
+                type="url"
+                name="update-banner"
+                id="update-banner"
+                class="font-post border-2 border-accent rounded-xl p-3"
+                placeholder="Enter Banner Image URL"
+              />
+            </div>
+            <button
+              type="submit"
+              class="flex justify-center mx-auto bg-accent font-accentFont text-md text-white py-2 px-4 mt-8 transition hover:bg-blue-500 hover:scale-110"
+              aria-label="Submit profile updates"
+            >
+              Update Profile
+            </button>
+            <span id="error"></span>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer
+      class="bg-accent font-accent text-white text-xs sm:text-sm p-16 mt-6"
+    >
+      <h3 class="flex justify-center">© BlueBid corp.</h3>
+    </footer>
+  </body>
+</html>
