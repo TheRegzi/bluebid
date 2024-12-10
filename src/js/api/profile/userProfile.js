@@ -2,7 +2,6 @@ import { headers } from '../headers';
 import { API_AUCTION_PROFILES } from '../constants';
 import { displayLoading, hideLoading } from '../../UI/loading';
 import { truncateText } from '../../UI/truncateText';
-import moneyBag from '../assets/money-bag.png';
 
 /**
  * Fetches user profile by sending a GET request to the API_AUCTION_PROFILES/username endpoint.
@@ -124,10 +123,6 @@ export async function displayLoggedInUserProfile() {
     profileElement.appendChild(image);
   }
 
-  const moneyBagImage = document.createElement('img');
-  moneyBagImage.src = moneyBag;
-  moneyBagImage.alt = 'Money Bag Icon';
-  moneyBagImage.classList.add('w-6', 'h-6');
 
   const credits = document.createElement('div');
   credits.textContent = `${profileData.credits} Credits`;
@@ -149,7 +144,6 @@ export async function displayLoggedInUserProfile() {
     'text-md',
     'shadow-xl'
   );
-  credits.appendChild(moneyBagImage);
 
   const username = document.createElement('h1');
   username.textContent = profileData.name;
