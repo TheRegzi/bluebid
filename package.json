@@ -10,7 +10,6 @@
     "format": "npx prettier --config prettier.config.mjs --write .",
     "lint": "eslint src/**/*.js",
     "lint-fix": "eslint src/**/*.js --cache --fix",
-    "prepare": "[[ $CI != true ]] && husky install || echo 'Skipping Husky on CI'",
     "test": "echo \"No tests specified\""
   },
   "devDependencies": {
@@ -22,9 +21,6 @@
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.15",
     "vite": "^5.4.10"
-  },
-  "dependencies": {
-    "husky": "^9.1.7"
   },
   "lint-staged": {
     "*.js": [
