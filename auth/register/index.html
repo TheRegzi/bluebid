@@ -1,18 +1,15 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register | BlueBid</title>
-    <meta
-      name="description"
-      content="Register to BlueBid and immerse yourself in the Auction Universe. Start bidding today!"
-    />
+    <meta name="description" content="Register to BlueBid and immerse yourself in the Auction Universe. Start bidding today!">
     <meta property="og:title" content="BlueBid - Register">
     <meta property="og:description" content="Register to BlueBid and immerse yourself in the Auction Universe. Start bidding today!">
     <meta property="og:url" content="https://bluebid.netlify.app/auth/register/">
     <meta property="og:image" content="/assets/bluebid-logo.png">
-    <link rel="icon" href="/favicon_bb/favicon.ico" />
+    <link rel="icon" href="/favicon_bb/favicon.ico">
     <script
       src="https://kit.fontawesome.com/878e5c0278.js"
       crossorigin="anonymous"
@@ -30,7 +27,7 @@
             src="/assets/bluebid-logo.png"
             alt="BlueBidLogo"
             class="h-28 p-4 pl-8"
-        /></a>
+        ></a>
       </div>
       <div class="relative">
         <nav
@@ -146,9 +143,8 @@
               >
               <input
                 id="name"
-                type="name"
+                type="text"
                 name="name"
-                autocomplete="username"
                 class="font-bod border-2 border-accent rounded-xl bg-white p-4"
                 placeholder="Enter Username"
                 required
@@ -156,7 +152,7 @@
                 pattern="^[\w]+$"
                 title="Please enter a username using only letters and numbers"
                 aria-label="Username input field"
-              />
+              >
             </div>
             <div class="w-full flex flex-col">
               <label for="email" class="font-heading text-lg mt-4"
@@ -173,7 +169,7 @@
                 pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
                 title="Please enter a valid stud.noroff.no address"
                 aria-label="Email input field"
-              />
+              >
             </div>
             <div class="w-full flex flex-col">
               <label for="password" class="font-heading text-lg mt-4"
@@ -189,7 +185,7 @@
                 required
                 minlength="8"
                 aria-label="Password input field"
-              />
+              >
             </div>
             <div class="w-full flex flex-col">
               <label for="bio" class="font-heading text-lg mt-4"
@@ -214,7 +210,7 @@
                 class="font-body border-2 border-accent rounded-xl bg-white p-4"
                 placeholder="Enter Profile Image URL"
                 aria-label="Profile image URL input field (optional)"
-              />
+              >
             </div>
             <div class="w-full flex flex-col">
               <label for="bannerUrl" class="font-heading text-lg mt-4"
@@ -227,7 +223,7 @@
                 class="font-body border-2 border-accent rounded-xl bg-white p-4"
                 placeholder="Enter Banner Image URL"
                 aria-label="Banner image URL input field (optional)"
-              />
+              >
             </div>
             <button
               class="bg-accent text-white mt-10 px-10 py-2 font-accentFont text-md sm:text-md"
