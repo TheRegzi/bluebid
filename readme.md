@@ -31,10 +31,10 @@ See the bids placed on a specific listing.
 - Search Listings: Browse and search through available auction listings without registering.
 
 ## Technologies Used
-HTML5: Structure and semantics
-Tailwind CSS: Styling and responsive design
-JavaScript: Dynamic behavior and API integration
-Noroff API: Back-end data management
+- HTML5: Structure and semantics
+- Tailwind CSS: Styling and responsive design
+- JavaScript: Dynamic behavior and API integration
+- Noroff API: Back-end data management
 
 ## Technical Requirements
 Front-End Only: The application focuses solely on the front-end, utilizing the Noroff API for all back-end functionality.
@@ -44,19 +44,19 @@ Responsive Design: The website should be accessible and user-friendly on all dev
 ## Getting Started
 ### Installation
 
-Clone the repository:
+- Clone the repository:
 
 git clone <https://github.com/TheRegzi/bluebid>
 
-Navigate to the project directory:
+- Navigate to the project directory:
 
 cd bluebid
 
-Install dependencies:
+- Install dependencies:
 
 npm install
 
-Start the development server:
+- Start the development server:
 
 npm start
 
