@@ -13,7 +13,7 @@
 
 export function createCarousel(listingArray) {
   const carouselWrapper = document.createElement('div');
-  carouselWrapper.className = 'relative overflow-hidden w-350 sm:w-550 mx-auto';
+  carouselWrapper.className = 'relative overflow-hidden w-350 sm:w-550 mx-auto shadow-2xl';
 
   const container = document.createElement('div');
   container.className = 'flex transition-transform duration-500 ease-in-out';
@@ -29,7 +29,6 @@ export function createCarousel(listingArray) {
       'sm:w-550',
       'h-auto',
       'object-contain',
-      'rounded-lg',
       'block',
       'mx-auto'
     );
@@ -46,7 +45,7 @@ export function createCarousel(listingArray) {
       <div class="flex justify-center items-center w-full h-full">
         <img src="${listing.url}" 
              alt="${listing.alt || 'Image'}" 
-             class="max-w-full max-h-full object-contain rounded-lg">
+             class="max-w-full max-h-full object-contain">
       </div>
     `;
     container.appendChild(item);
