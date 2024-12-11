@@ -44,20 +44,18 @@ Responsive Design: The website should be accessible and user-friendly on all dev
 ## Getting Started
 ### Installation
 
-- Clone the repository:
 
+1. **Clone the repo:**
+   ```bash
 git clone <https://github.com/TheRegzi/bluebid>
-
-- Navigate to the project directory:
-
+2. **Navigate to the project directory:**
+   ```bash
 cd bluebid
-
-- Install dependencies:
-
+3. **Install dependencies:**
+```bash
 npm install
-
-- Start the development server:
-
+4. **Start the development server:**
+```bash
 npm start
 
 ## Deployment
