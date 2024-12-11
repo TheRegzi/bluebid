@@ -47,16 +47,19 @@ Responsive Design: The website should be accessible and user-friendly on all dev
 
 1. **Clone the repo:**
    ```bash
-git clone <https://github.com/TheRegzi/bluebid>
+   git clone <https://github.com/TheRegzi/bluebid>
+   
 2. **Navigate to the project directory:**
    ```bash
-cd bluebid
+   cd bluebid
+   
 3. **Install dependencies:**
-```bash
-npm install
+   ```bash
+   npm install
+
 4. **Start the development server:**
-```bash
-npm start
+   ```bash
+   npm start
 
 ## Deployment
 The project is hosted on a static server. Visit the application at: https://bluebid.netlify.app/
