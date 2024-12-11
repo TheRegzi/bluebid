@@ -47,7 +47,7 @@ Responsive Design: The website should be accessible and user-friendly on all dev
 
 1. **Clone the repo:**
    ```bash
-   git clone <https://github.com/TheRegzi/bluebid>
+   git clone https://github.com/TheRegzi/bluebid.git
    
 2. **Navigate to the project directory:**
    ```bash
