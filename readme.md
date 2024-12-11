@@ -1,4 +1,4 @@
-# Semester Project 2: Auction Website
+# Semester Project 2: Bluebid 
 ![BlueBid Homepage image](./assets/bluebid-home.png)
 ## Overview
 This project is my submission for the Semester Project 2 at my Front-end Development studies at Noroff. The project shows the skills learned over three semesters, aimed at developing a front-end auction website. The website allows users to register, create auction listings, and bid on items using a credit-based system. The application communicates with an existing API to handle auction-related data.
