@@ -63,3 +63,7 @@ Responsive Design: The website should be accessible and user-friendly on all dev
 
 ## Deployment
 The project is hosted on a static server. Visit the application at: https://bluebid.netlify.app/
+
+## Contact
+
+[My LinkedIn Page](https://www.linkedin.com/in/regine-dille-kornbakk-aa0a7b288/)
