@@ -1,14 +1,11 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Auction on BlueBid</title>
-    <meta
-      name="description"
-      content="Own a piece of history! Bid on this item and make it yours. Ensure your bid is higher than the current bid before the auction ends!"
-    />
-    <link rel="icon" href="/favicon_bb/favicon.ico" />
+    <meta name="description" content="Own a piece of history! Bid on this item and make it yours. Ensure your bid is higher than the current bid before the auction ends!">
+    <link rel="icon" href="/favicon_bb/favicon.ico">
     <script
       src="https://kit.fontawesome.com/878e5c0278.js"
       crossorigin="anonymous"
@@ -26,7 +23,7 @@
             src="/assets/bluebid-logo.png"
             alt="BlueBid Logo"
             class="h-28 p-4 pl-8"
-        /></a>
+        ></a>
       </div>
       <div class="relative">
         <nav
@@ -162,7 +159,7 @@
             aria-label="Bid submission form"
           >
             <div class="mx-auto mt-5">
-              <label for="bid-input"></label>
+              <label for="bid-input" aria-label="Enter bid amount"></label>
               <input
                 type="number"
                 name="bid-input"
@@ -172,7 +169,7 @@
                 required
                 min="1"
                 aria-label="Bid input field"
-              />
+              >
             </div>
             <div class="mb-10">
               <button
