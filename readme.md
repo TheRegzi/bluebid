@@ -61,6 +61,10 @@ Responsive Design: The website should be accessible and user-friendly on all dev
    ```bash
    npm start
 
+## Contributing
+
+If you want to contribute, please make a pull request so any changes can be reviewed before being merged. If you have questions or ideas, feel free to open an issue. All contributions are welcome!
+
 ## Deployment
 The project is hosted on a static server. Visit the application at: https://bluebid.netlify.app/
 
